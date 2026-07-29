@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import { site } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: "Privacy",
+  description: "How SkillsProMax handles your personal information.",
+};
+
+export default function PrivacyPage() {
+  return (
+    <section className="border-b border-line">
+      <div className="shell py-14 md:py-20">
+        <p className="eyebrow">Policy</p>
+        <h1 className="display-lg mt-5">Privacy</h1>
+
+        <div className="prose-doc mt-10">
+          <h2>What we collect</h2>
+          <p>
+            When you apply or send an enquiry we collect your name, phone number, and
+            optionally your email, CNIC, city, education and the information you type into
+            the form. If you enrol, we also keep attendance, assessment and fee records.
+          </p>
+
+          <h2>Why we collect it</h2>
+          <p>
+            To contact you about your application, to place you in the correct batch, to
+            keep student and fee records, and to calculate the outcome figures we publish.
+            Published outcome figures are always aggregate — we never publish an individual
+            student&rsquo;s name or earnings without their written permission.
+          </p>
+
+          <h2>Who can see it</h2>
+          <p>
+            Only our admissions and teaching staff. We do not sell your information, and we
+            do not share it with third parties for marketing. We will never pass your phone
+            number to another institute or business.
+          </p>
+
+          <h2>CNIC and identity documents</h2>
+          <p>
+            CNIC is optional at application stage. We ask for it at enrolment for our own
+            student records only. It is not shared with anyone.
+          </p>
+
+          <h2>How long we keep it</h2>
+          <p>
+            Application records are kept for two years. Student records are kept for five
+            years after completion so we can verify your enrolment if a future employer or
+            client asks.
+          </p>
+
+          <h2>Your choices</h2>
+          <p>
+            You can ask us to correct or delete your information at any time by emailing{" "}
+            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>. You can ask
+            us to stop contacting you and we will.
+          </p>
+
+          <h2>This website</h2>
+          <p>
+            We use a session cookie for the student and staff portal. We do not run
+            advertising trackers on this site.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
