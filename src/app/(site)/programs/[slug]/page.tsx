@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Check, X, ArrowLeft } from "lucide-react";
 import { programs, campus } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
+import { JsonLd, courseSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return programs.map((p) => ({ slug: p.slug }));
@@ -34,8 +35,11 @@ export default async function ProgramPage({
 
   const total = program.feeMonthly * program.feeMonths;
 
+  const schema = courseSchema(program.slug);
+
   return (
     <>
+      {schema && <JsonLd data={schema} />}
       <section className="border-b border-line">
         <div className="shell py-12 md:py-16">
           <Link

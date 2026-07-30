@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { site } from "@/content/site";
+import { JsonLd, organizationSchema } from "@/lib/schema";
 
 /**
  * Public marketing chrome: header, footer, skip link, and the
@@ -23,27 +23,7 @@ export default function SiteLayout({
         {children}
       </main>
       <SiteFooter />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
-            name: site.name,
-            url: site.url,
-            email: site.emails.info,
-            telephone: site.phone.display,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: `${site.address.landmark}, ${site.address.road}`,
-              addressLocality: "Depalpur",
-              addressRegion: "Punjab",
-              addressCountry: "PK",
-            },
-            areaServed: ["Depalpur", "Okara", "Pattoki", "Kasur", "Sahiwal"],
-          }),
-        }}
-      />
+      <JsonLd data={organizationSchema()} />
     </>
   );
 }

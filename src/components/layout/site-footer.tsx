@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { site, programs } from "@/content/site";
+import { NAP } from "@/lib/schema";
 
 export function SiteFooter() {
   return (
@@ -92,7 +93,7 @@ export function SiteFooter() {
 
       <div className="border-t border-line">
         <div className="shell flex flex-col gap-3 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {NAP.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link href="/promises" className="hover:text-accent">Our promises</Link>
             <Link href="/refund-policy" className="hover:text-accent">Refund policy</Link>

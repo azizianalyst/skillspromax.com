@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { programs, workshops } from "@/content/site";
@@ -30,44 +31,57 @@ export function ProgramCards() {
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {programs.map((p) => (
-            <article key={p.slug} className="card card-hover flex flex-col p-7">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="display-md">{p.name}</h3>
-                  <p className="mt-1.5 text-sm text-muted">{p.audience}</p>
-                </div>
-                <span className={p.status === "open" ? "chip chip-accent" : "chip chip-amber"}>
+            <article key={p.slug} className="card card-hover flex flex-col overflow-hidden">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-sand-deep">
+                <Image
+                  src={p.image}
+                  alt={p.name}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <span
+                  className={
+                    (p.status === "open" ? "chip chip-accent" : "chip chip-amber") +
+                    " absolute right-3 top-3 bg-canvas/95 backdrop-blur-sm"
+                  }
+                >
                   {statusLabel[p.status]}
                 </span>
               </div>
 
-              <p className="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">
-                {p.summary}
-              </p>
+              <div className="flex flex-1 flex-col p-7">
+                <h3 className="display-md">{p.name}</h3>
+                <p className="mt-1.5 text-sm text-muted">{p.audience}</p>
 
-              <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-5 text-sm">
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-faint">Duration</dt>
-                  <dd className="mt-1 text-ink">{p.duration}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-faint">Fee</dt>
-                  <dd className="mt-1 text-ink tnum">
-                    {formatPkr(p.feeMonthly)}<span className="text-muted">/month</span>
-                    <span className="block text-xs text-muted">
-                      {p.feeMonths} months · {formatPkr(p.feeMonthly * p.feeMonths)} total
-                    </span>
-                  </dd>
-                </div>
-              </dl>
+                <p className="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">
+                  {p.summary}
+                </p>
 
-              <Link
-                href={`/programs/${p.slug}`}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
-              >
-                Full curriculum and honest outcomes
-                <ArrowRight className="size-3.5" aria-hidden />
-              </Link>
+                <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-5 text-sm">
+                  <div>
+                    <dt className="text-xs uppercase tracking-wider text-faint">Duration</dt>
+                    <dd className="mt-1 text-ink">{p.duration}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs uppercase tracking-wider text-faint">Fee</dt>
+                    <dd className="mt-1 text-ink tnum">
+                      {formatPkr(p.feeMonthly)}<span className="text-muted">/month</span>
+                      <span className="block text-xs text-muted">
+                        {p.feeMonths} months · {formatPkr(p.feeMonthly * p.feeMonths)} total
+                      </span>
+                    </dd>
+                  </div>
+                </dl>
+
+                <Link
+                  href={`/programs/${p.slug}`}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                >
+                  Full curriculum and honest outcomes
+                  <ArrowRight className="size-3.5" aria-hidden />
+                </Link>
+              </div>
             </article>
           ))}
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { parents, site } from "@/content/site";
+import { JsonLd, faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "For parents",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ParentsPage() {
   return (
     <>
+      <JsonLd data={faqSchema()} />
       <section className="border-b border-line">
         <div className="shell py-14 md:py-20">
           <p className="eyebrow">For families</p>

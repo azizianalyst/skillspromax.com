@@ -31,7 +31,38 @@ export async function updateApplicationStatus(
   noteBody?: string,
 ): Promise<ActionResult> {
   const { id: userId } = await requireStaff();
+  return applyStatusChange(userId, applicationId, status, noteBody);
+}
 
+/**
+ * Progressive-enhancement form action. Works without JavaScript (plain POST)
+ * and is therefore testable over plain HTTP. Shares the same core as the
+ * programmatic variant above.
+ */
+export type StatusFormState = { ok: boolean; error?: string };
+
+export async function updateApplicationStatusAction(
+  _prev: StatusFormState,
+  formData: FormData,
+): Promise<StatusFormState> {
+  console.log("[action] updateApplicationStatusAction CALLED");
+  const { id: userId } = await requireStaff();
+  const applicationId = String(formData.get("applicationId") ?? "");
+  const status = String(formData.get("status") ?? "") as ApplicationStatus;
+  const note = String(formData.get("note") ?? "").trim();
+
+  if (!applicationId || !status) {
+    return { ok: false, error: "Missing application or status." };
+  }
+  return applyStatusChange(userId, applicationId, status, note);
+}
+
+async function applyStatusChange(
+  userId: string,
+  applicationId: string,
+  status: ApplicationStatus,
+  noteBody?: string,
+): Promise<ActionResult> {
   const app = await db.application.findUnique({
     where: { id: applicationId },
     select: { id: true, status: true },

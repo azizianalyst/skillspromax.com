@@ -154,6 +154,7 @@ export const honestComparison = {
 export type Program = {
   slug: string;
   name: string;
+  image: string;
   audience: string;
   status: "open" | "waitlist" | "planned";
   duration: string;
@@ -173,6 +174,7 @@ export const programs: Program[] = [
   {
     slug: "foundation",
     name: "Foundation",
+    image: "/images/programs/foundation.jpg",
     audience: "Students, fresh graduates, complete beginners",
     status: "open",
     duration: "8 weeks",
@@ -207,6 +209,7 @@ export const programs: Program[] = [
   {
     slug: "ai-automation-practitioner",
     name: "AI Automation Practitioner",
+    image: "/images/programs/ai-automation-practitioner.jpg",
     audience: "The flagship — for people ready to work with clients",
     status: "open",
     duration: "16 weeks",
@@ -241,6 +244,7 @@ export const programs: Program[] = [
   {
     slug: "re-skill",
     name: "Re-skill",
+    image: "/images/programs/re-skill.jpg",
     audience: "Freelancers whose rates are falling",
     status: "open",
     duration: "8 weeks",
@@ -274,6 +278,7 @@ export const programs: Program[] = [
   {
     slug: "advance",
     name: "Advance",
+    image: "/images/programs/advance.jpg",
     audience: "People already in a job",
     status: "waitlist",
     duration: "8 weeks",
