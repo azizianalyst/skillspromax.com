@@ -256,6 +256,18 @@
   }
   .chip-amber { background: var(--color-amber-soft); border-color: #f0e0bc; color: var(--color-amber); }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
   /* Rules -------------------------------------------------- */
   .hair { height: 1px; background: var(--color-line); border: 0; }
 
@@ -276,4 +288,19 @@
     background-size: 25% 100%;
   }
   .tnum { font-variant-numeric: tabular-nums; }
+}
+
+@media print {
+  header,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Check, MapPin } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 import { hero, site } from "@/content/site";
 
 export function Hero() {
@@ -14,12 +13,16 @@ export function Hero() {
           <p className="lede mt-6 max-w-xl">{hero.body}</p>
 
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link href={hero.primary.href} className="btn btn-primary btn-lg">
+            <a href={hero.primary.href} className="btn btn-primary btn-lg">
               {hero.primary.label}
-            </Link>
-            <Link href={hero.secondary.href} className="btn btn-outline btn-lg">
+            </a>
+            <a href={hero.secondary.href} className="btn btn-outline btn-lg">
               {hero.secondary.label}
-            </Link>
+            </a>
+            <a href={site.whatsapp.href} className="btn btn-ghost btn-lg">
+              <MessageCircle className="size-4" aria-hidden />
+              WhatsApp
+            </a>
           </div>
 
           <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2">
@@ -32,27 +35,23 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* Location / trust card — a landmark, because that is how people navigate here */}
         <div className="lg:col-span-5">
           <div className="card overflow-hidden">
             <div className="border-b border-line bg-sand px-6 py-5">
-              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
-                <MapPin className="size-3.5" aria-hidden />
-                Our campus
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+                How you join
               </p>
-              <p className="mt-3 font-display text-xl leading-snug">
-                {site.address.landmark}
-              </p>
+              <p className="mt-3 font-display text-xl leading-snug">{site.location.label}</p>
               <p className="mt-1 text-sm text-muted">
-                {site.address.road} · {site.address.tehsil}
+                Live classes · Small batches · Monthly fees
               </p>
             </div>
 
             <dl className="divide-y divide-line">
               {[
-                ["Halls", "Three separate halls — boys and girls taught separately"],
-                ["Facilities", "Air conditioned, fully furnished, backup power"],
-                ["Batches", "Morning · Midday · Afternoon · Evening"],
+                ["Format", "Live online — attend from any city in Pakistan"],
+                ["Batches", "Separate cohorts for male and female students"],
+                ["Size", "Capped groups so your work is reviewed"],
                 ["Fees", "Charged monthly, not as one large amount"],
               ].map(([term, detail]) => (
                 <div key={term} className="grid grid-cols-3 gap-4 px-6 py-4">
@@ -65,9 +64,9 @@ export function Hero() {
             </dl>
 
             <div className="border-t border-line px-6 py-4">
-              <Link href="/campus" className="text-sm font-medium text-accent hover:underline">
-                Visit the campus →
-              </Link>
+              <a href="/#apply" className="text-sm font-medium text-accent hover:underline">
+                Apply free — no fee to apply →
+              </a>
             </div>
           </div>
         </div>

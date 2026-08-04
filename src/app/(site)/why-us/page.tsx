@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { differentiators, honestComparison, promises } from "@/content/site";
 import { Comparison } from "@/components/home/comparison";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Why SkillsProMax",
+export const metadata: Metadata = pageMeta({
+  title: "Why SkillsProMax — Not Another Free Course",
   description:
-    "What makes SkillsProMax different from free government courses and from other private institutes in Okara: real client work, published outcomes, and honest promises.",
-};
+    "How SkillsProMax differs from DigiSkills and private institutes in Okara: small batches, real client work, published outcomes, separate halls, honest fees.",
+  path: "/why-us",
+});
 
 export default function WhyUsPage() {
   return (

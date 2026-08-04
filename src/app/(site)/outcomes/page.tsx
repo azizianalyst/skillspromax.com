@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our results",
+/** Deferred from phase-1 sitemap until real cohort numbers exist. */
+export const metadata: Metadata = pageMeta({
+  title: "Our Results — Published Outcomes",
   description:
-    "SkillsProMax publishes the real numbers after every batch — enrolled, completed, dropped, how many earned within 90 days, and how many earned nothing.",
-};
+    "SkillsProMax will publish enrolled, completed, earned, and earned-nothing numbers after every batch — including bad batches.",
+  path: "/outcomes",
+  index: false,
+});
 
 const metrics = [
   ["Enrolled", "How many students started the batch."],

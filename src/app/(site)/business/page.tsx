@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { business, site } from "@/content/site";
 import { InquiryForm } from "@/components/forms/inquiry-form";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For businesses",
+/** Phase-2 SEO — live for enquiries, deferred from first sitemap. */
+export const metadata: Metadata = pageMeta({
+  title: "Automation for Businesses in Okara",
   description:
-    "Automation and AI systems for businesses in Okara — dairy and milk collection, potato trading and cold storage, agri-input dealers, schools and clinics. Built locally, priced sensibly.",
-};
+    "AI automation for dairy, potato trading, agri dealers, schools and clinics in Okara District. Built locally by SkillsProMax.",
+  path: "/business",
+  index: false,
+});
 
 export default function BusinessPage() {
   return (

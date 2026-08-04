@@ -70,12 +70,15 @@ src/
     why-us/  outcomes/  promises/
     contact/  refund-policy/  privacy/
     actions/apply.ts         Server actions: application + enquiry
+    portal/                  Student portal (overview, fees, profile)
+    api/payments/jazzcash/   Hosted checkout return + IPN
   components/
     layout/                  Header, footer
     home/                    Homepage sections
     forms/                   Application form, enquiry form
+    portal/                  Student portal UI
   content/site.ts            ← ALL COPY LIVES HERE
-  lib/                       db, mail, validation, utils
+  lib/                       db, mail, validation, jazzcash, fees, student
 prisma/schema.prisma         Data model
 ```
 
@@ -84,7 +87,7 @@ addresses, promises and the parent Q&A are all there.
 
 ### Before launch — replace these
 
-- `src/content/site.ts` → `phone` and `whatsapp` are placeholders (`+92 300 000 0000`)
+- `src/content/site.ts` → campus phone / WhatsApp (`+92 329 1522376`)
 - Add real photographs of the halls and building to `public/` and wire them into
   `campus/page.tsx` and the homepage hero. Real photos of *this* building matter more
   than anything else on the site — do not use stock imagery.
@@ -115,6 +118,9 @@ Utility classes worth knowing: `.shell` (page gutter), `.section` (vertical rhyt
   completion, and the published outcome figures depend on this field being honest.
 - **`CohortOutcome`** holds the six published figures per batch, including
   `earnedNothing`. Publishing the bad number is the point.
+- **`FeePayment`** statuses: `PENDING` → `VERIFIED` (or `FAILED`). Students pay from
+  `/portal/fees`; staff confirm on `/admin/fees`. JazzCash hosted checkout sets
+  `gatewayRef` and verifies via return/IPN when merchant credentials are configured.
 
 ---
 
@@ -126,14 +132,15 @@ Utility classes worth knowing: `.shell` (page gutter), `.section` (vertical rhyt
 - [x] Prisma schema
 - [x] Auth (Auth.js v5, roles: ADMIN / STAFF / STUDENT)
 - [x] Admin panel: dashboard, applications pipeline (with status/notes/assignment), inquiries, batches, fees, outcomes
-- [ ] Student portal
-- [ ] JazzCash / Easypaisa
+- [x] Student portal (overview, fees, profile, manual payment submission)
+- [x] JazzCash hosted checkout (activates when `JAZZCASH_*` env is set) + Easypaisa via manual txn ID
 
 ## Verify before you trust it
 
 `npx tsc --noEmit`, `npm run build`, and a full click-through (including sign-in,
-the admin pipeline, and both public forms) have been run against this code with the
-local SQLite dev database. Re-run the same steps after any schema or dependency change:
+the admin pipeline, both public forms, and the student portal) have been run against
+this code with the local SQLite dev database. Re-run the same steps after any schema
+or dependency change:
 
 ```bash
 npm install
@@ -144,3 +151,18 @@ npm run dev          # then click through every page
 
 Then test: submit an application, check the row lands in the database, and check the
 email arrives at `admission@skillspromax.com` (requires real SMTP credentials in `.env`).
+
+### Student portal smoke test
+
+Seed creates a demo student (password from seed):
+
+- Email: `usman.tariq@student.skillspromax.com`
+- Password: `skillspromax-dev-123`
+
+1. Sign in at `/login` → should land on `/portal`
+2. Open Fees → pay Month 2 → submit a transaction ID
+3. Sign in as admin → Fees → Verify
+4. Sign back in as student → instalment shows Verified
+
+JazzCash online button appears only when `JAZZCASH_MERCHANT_ID`, `JAZZCASH_PASSWORD`
+and `JAZZCASH_INTEGRITY_SALT` are all set.

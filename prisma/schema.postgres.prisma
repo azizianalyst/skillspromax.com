@@ -282,6 +282,8 @@ model Enrollment {
   completedAt   DateTime?
   /// Completion means the client deliverable shipped — not attendance.
   deliverableShipped Boolean     @default(false)
+  /// NOT_STARTED | IN_PROGRESS | SHIPPED — shown on the student portal.
+  deliverableStatus  String      @default("NOT_STARTED")
 
   payments FeePayment[]
 
@@ -298,6 +300,8 @@ model FeePayment {
   amount       Int
   method       PaymentMethod
   status       PaymentStatus @default(PENDING)
+  /// When this instalment should be paid (shown to students / parents).
+  dueDate      DateTime?
   reference    String?
   /// Raw gateway payload for audit
   gatewayRef   String?
@@ -309,6 +313,7 @@ model FeePayment {
 
   @@index([enrollmentId])
   @@index([status])
+  @@index([dueDate])
 }
 
 /* ------------------------------------------------------------------ */

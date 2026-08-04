@@ -3,12 +3,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { programs, workshops } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Programs",
+export const metadata: Metadata = pageMeta({
+  title: "AI & Digital Skills Programs Depalpur",
   description:
-    "Four programs on one ladder: Foundation, AI Automation Practitioner, Re-skill for existing freelancers, and Advance for working professionals. Monthly fees, separate batches for boys and girls.",
-};
+    "Foundation, AI Automation Practitioner, Re-skill, and Advance — one ladder in Depalpur, Okara. Monthly fees, separate boys and girls batches, real client work.",
+  path: "/programs",
+});
 
 const statusLabel: Record<string, string> = {
   open: "Admissions open",

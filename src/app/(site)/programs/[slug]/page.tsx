@@ -5,6 +5,7 @@ import { Check, X, ArrowLeft } from "lucide-react";
 import { programs, campus } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
 import { JsonLd, courseSchema } from "@/lib/schema";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return programs.map((p) => ({ slug: p.slug }));
@@ -18,10 +19,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const program = programs.find((p) => p.slug === slug);
   if (!program) return { title: "Program not found" };
-  return {
-    title: program.name,
-    description: program.summary.slice(0, 155),
-  };
+  return pageMeta({
+    title: `${program.name} Course Depalpur Okara`,
+    description: `${program.summary.slice(0, 140)} Monthly fees from ${formatPkr(program.feeMonthly)}. Apply free at SkillsProMax.`,
+    path: `/programs/${program.slug}`,
+  });
 }
 
 export default async function ProgramPage({

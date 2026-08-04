@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { programs, site } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Admissions & fees",
+export const metadata: Metadata = pageMeta({
+  title: "Admissions & Fees — How to Enrol",
   description:
-    "How admission works at SkillsProMax: apply free, a phone call, an entry assessment, then enrolment. Fees are billed monthly with instalments and merit reductions available.",
-};
+    "How admission works at SkillsProMax Depalpur: free apply, phone call, entry assessment, then enrolment. Monthly fees, instalments, merit reductions. Full fee table.",
+  path: "/admissions",
+});
 
 const steps = [
   {

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { ApplicationForm } from "@/components/forms/application-form";
 import { site, promises } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Apply for a seat",
+export const metadata: Metadata = pageMeta({
+  title: "Apply for Admission — Free Application",
   description:
-    "Apply to SkillsProMax in Tehsil Depalpur, District Okara. No fee to apply. Separate batches for boys and girls, flexible timings, monthly fees.",
-};
+    "Apply free to SkillsProMax in Depalpur, Okara. Separate batches for boys and girls, monthly fees, entry assessment. No application fee. WhatsApp +92 329 1522376.",
+  path: "/apply",
+});
 
 export default async function ApplyPage({
   searchParams,

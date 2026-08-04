@@ -6,6 +6,27 @@ const nextConfig: NextConfig = {
   // Keep Node-native deps out of the server bundle.
   serverExternalPackages: ["@prisma/client", "nodemailer"],
   images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    // One-pager launch: send old marketing URLs home (expand later).
+    const toHome = [
+      "/programs",
+      "/programs/:slug",
+      "/apply",
+      "/admissions",
+      "/campus",
+      "/parents",
+      "/contact",
+      "/why-us",
+      "/outcomes",
+      "/promises",
+      "/business",
+    ];
+    return toHome.map((source) => ({
+      source,
+      destination: "/",
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       {

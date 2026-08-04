@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { promises, site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our promises",
+/** Covered on /why-us — keep live but out of phase-1 index focus. */
+export const metadata: Metadata = pageMeta({
+  title: "Our Promises",
   description:
-    "The specific commitments SkillsProMax holds itself to — no guaranteed jobs, no false accreditation claims, published outcomes including the bad numbers.",
-};
+    "The commitments SkillsProMax holds itself to — no guaranteed jobs, no false accreditation, published outcomes including bad numbers.",
+  path: "/promises",
+  index: false,
+});
 
 const detail: Record<string, string> = {
   "We will never guarantee you a job or an income.":

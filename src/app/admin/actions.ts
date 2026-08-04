@@ -147,12 +147,48 @@ export async function setInquiryHandled(
 
 export async function verifyFeePayment(paymentId: string): Promise<ActionResult> {
   const { id: userId } = await requireStaff();
+  const existing = await db.feePayment.findUnique({ where: { id: paymentId } });
+  if (!existing) return { ok: false, error: "Payment not found." };
+  if (existing.status === "VERIFIED") return { ok: true };
+
   await db.feePayment.update({
     where: { id: paymentId },
     data: { status: "VERIFIED", verifiedById: userId, paidAt: new Date() },
   });
   revalidatePath("/admin/fees");
   revalidatePath("/admin");
+  revalidatePath("/portal");
+  revalidatePath("/portal/fees");
+  revalidatePath(`/portal/fees/${paymentId}`);
+  revalidatePath(`/portal/fees/${paymentId}/receipt`);
+  return { ok: true };
+}
+
+/* -------------------------------------------------------------- */
+/* Enrolment deliverable status                                    */
+/* -------------------------------------------------------------- */
+
+const deliverableSchema = z.enum(["NOT_STARTED", "IN_PROGRESS", "SHIPPED"]);
+
+export async function setDeliverableStatus(
+  enrollmentId: string,
+  status: string,
+): Promise<ActionResult> {
+  await requireStaff();
+  const parsed = deliverableSchema.safeParse(status);
+  if (!parsed.success) return { ok: false, error: "Invalid deliverable status." };
+
+  await db.enrollment.update({
+    where: { id: enrollmentId },
+    data: {
+      deliverableStatus: parsed.data,
+      deliverableShipped: parsed.data === "SHIPPED",
+      completedAt: parsed.data === "SHIPPED" ? new Date() : null,
+    },
+  });
+  revalidatePath("/admin/batches");
+  revalidatePath("/admin");
+  revalidatePath("/portal");
   return { ok: true };
 }
 

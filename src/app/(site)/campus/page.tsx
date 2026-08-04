@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Clock, Phone } from "lucide-react";
 import { campus, site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Campus & timings",
+export const metadata: Metadata = pageMeta({
+  title: "Campus & Timings — Allahabad Depalpur",
   description:
-    "Our own building on Depalpur–Kasur Road beside Govt. Associate College for Women, Allahabad. Three separate halls, air conditioned, furnished, with morning to evening batches.",
-};
+    "SkillsProMax campus on Depalpur–Kasur Road beside Govt. Associate College for Women, Allahabad. Separate AC halls, morning to evening batches. Visit before you enrol.",
+  path: "/campus",
+});
 
 export default function CampusPage() {
   return (

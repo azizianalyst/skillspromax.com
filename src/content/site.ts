@@ -15,10 +15,16 @@ export const site = {
     support: "support@skillspromax.com",
   },
 
-  // TODO: replace with real numbers before launch
-  phone: { display: "+92 300 000 0000", href: "tel:+923000000000" },
-  whatsapp: { display: "+92 300 000 0000", href: "https://wa.me/923000000000" },
+  phone: { display: "+92 329 1522376", href: "tel:+923291522376" },
+  whatsapp: { display: "+92 329 1522376", href: "https://wa.me/923291522376" },
 
+  /** Public location — no street address while we launch Pakistan-wide online. */
+  location: {
+    label: "Pakistan · Online live batches",
+    country: "Pakistan",
+  },
+
+  /** Kept for staff/GBP later — not shown on the public one-pager. */
   address: {
     landmark: "Near Govt. Associate College for Women, Allahabad",
     road: "Depalpur–Kasur Road",
@@ -31,22 +37,33 @@ export const site = {
   },
 
   hours: [
-    { label: "Monday – Saturday", value: "8:00 AM – 8:00 PM" },
-    { label: "Sunday", value: "Closed (workshops only)" },
+    { label: "Monday – Saturday", value: "Live online batches (evening slots available)" },
+    { label: "Sunday", value: "Workshops / catch-up by arrangement" },
+  ],
+
+  serviceArea: [
+    "Pakistan",
+    "Lahore",
+    "Karachi",
+    "Islamabad",
+    "Rawalpindi",
+    "Faisalabad",
+    "Multan",
+    "Okara",
+    "Sahiwal",
   ],
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* Navigation                                                          */
+/* Navigation — one-pager anchors                                      */
 /* ------------------------------------------------------------------ */
 
 export const nav = [
-  { label: "Programs", href: "/programs" },
-  { label: "Why us", href: "/why-us" },
-  { label: "Campus", href: "/campus" },
-  { label: "For businesses", href: "/business" },
-  { label: "For parents", href: "/parents" },
-  { label: "Contact", href: "/contact" },
+  { label: "Programs", href: "/#programs" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Fees", href: "/#fees" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Apply", href: "/#apply" },
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -54,15 +71,15 @@ export const nav = [
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Depalpur · District Okara",
+  eyebrow: "Online live · All Pakistan",
   heading: "Skills that pay. Taught properly.",
   body:
-    "SkillsProMax trains people in Tehsil Depalpur to earn real income with AI, automation and digital work — through freelancing, remote contracts, or by becoming the person their employer cannot replace. Separate halls for boys and girls. Timings that fit farming and college.",
-  primary: { label: "Apply for a seat", href: "/apply" },
-  secondary: { label: "See the programs", href: "/programs" },
+    "SkillsProMax trains people across Pakistan to earn with AI, automation and digital work — through freelancing, remote contracts, or becoming the person their employer cannot replace. Live online batches. Monthly fees. Real client work before you finish.",
+  primary: { label: "Apply free", href: "/#apply" },
+  secondary: { label: "See programs", href: "/#programs" },
   points: [
-    "Separate, air-conditioned halls for boys and girls",
-    "Morning, afternoon and evening batches",
+    "Live online classes — join from anywhere in Pakistan",
+    "Small batches so your work gets reviewed",
     "Monthly fees — no large lump sum",
     "You leave with real work, not just a certificate",
   ],
@@ -91,7 +108,7 @@ export const differentiators = [
   {
     title: "We publish our real numbers",
     body:
-      "After every batch we publish how many enrolled, how many finished, how many earned money within 90 days, and how many earned nothing. Including the bad batches. Nobody else in this district does this, and it is the fastest way to tell us apart.",
+      "After every batch we publish how many enrolled, how many finished, how many earned money within 90 days, and how many earned nothing. Including the bad batches. That honesty is how you tell us apart.",
   },
   {
     title: "Small batches, with a real entry test",
@@ -112,7 +129,7 @@ export const differentiators = [
 export const honestComparison = {
   heading: "There are free courses. Should you take them instead?",
   intro:
-    "Sometimes yes, and we will say so. DigiSkills, NAVTTC and the e-Rozgaar centre at Govt. Graduate College Okara are free, and NAVTTC even pays a monthly stipend. If money is the binding constraint, start there — genuinely. Here is the honest difference.",
+    "Sometimes yes, and we will say so. DigiSkills and NAVTTC are free, and NAVTTC even pays a monthly stipend. If money is the binding constraint, start there — genuinely. Here is the honest difference.",
   rows: [
     {
       point: "Cost",
@@ -122,7 +139,7 @@ export const honestComparison = {
     {
       point: "Finishing",
       free: "Most people do not finish. Completion on free online courses typically runs well under 20%.",
-      us: "A room, a fixed batch, attendance that is noticed, and a pass/fail on work you produced.",
+      us: "A fixed live batch, attendance that is noticed, and a pass/fail on work you produced.",
     },
     {
       point: "What you build",
@@ -142,7 +159,7 @@ export const honestComparison = {
     {
       point: "Best students",
       free: "No route onward.",
-      us: "The strongest graduates in each batch are offered paid delivery work with us.",
+      us: "The strongest graduates in each cohort may be offered paid delivery work with us.",
     },
   ],
 } as const;
@@ -355,6 +372,71 @@ export const campus = {
 } as const;
 
 /* ------------------------------------------------------------------ */
+/* One-pager — how it works                                            */
+/* ------------------------------------------------------------------ */
+
+export const howItWorks = {
+  heading: "How learning works",
+  body: "Live online batches you can join from anywhere in Pakistan. Small cohorts, real reviews, monthly fees.",
+  steps: [
+    {
+      title: "Apply free",
+      body: "Tell us your city, program interest and timing. No application fee.",
+    },
+    {
+      title: "Call + assessment",
+      body: "We call within two working days, explain fees honestly, and run a short entry check.",
+    },
+    {
+      title: "Live online batch",
+      body: "Fixed schedule on Zoom/Meet-class style sessions. Attendance matters. Work is reviewed.",
+    },
+    {
+      title: "Ship real work",
+      body: "You finish with a supervised client-style deliverable — not a certificate for watching videos.",
+    },
+  ],
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* One-pager FAQ (Pakistan-wide)                                       */
+/* ------------------------------------------------------------------ */
+
+export const homeFaq = {
+  heading: "Questions people ask before applying",
+  items: [
+    {
+      q: "Is this online or on campus?",
+      a: "Live online batches for students across Pakistan. That is how you join today. A Punjab campus visit can be arranged later by appointment — we do not publish a street address on this site yet.",
+    },
+    {
+      q: "Can I join from Lahore, Karachi or another city?",
+      a: "Yes. If you have a laptop, stable internet and can attend live sessions, you can apply from anywhere in Pakistan.",
+    },
+    {
+      q: "Are boys and girls in separate batches?",
+      a: "Yes. We run separate cohorts and timings for male and female students. We ask gender only to place you correctly.",
+    },
+    {
+      q: "How are fees paid?",
+      a: "Monthly — not one large lump sum. Exact amounts are listed under Fees on this page. Ask about instalments on the admissions call.",
+    },
+    {
+      q: "Do you guarantee a job or income?",
+      a: "No. Anyone who promises guaranteed income is selling something else. We publish real batch outcomes — including who earned nothing — after each cohort.",
+    },
+    {
+      q: "What if DigiSkills or NAVTTC is free?",
+      a: "If money is the only constraint, start there — genuinely. We are paid because you get a live batch, reviewed work, and a year of support after you finish.",
+    },
+    {
+      q: "What do I need to start?",
+      a: "A computer you can use for class, internet that holds a video call, and enough English to follow professional client work. We will tell you honestly if you are not ready yet.",
+    },
+  ],
+} as const;
+
+/* ------------------------------------------------------------------ */
 /* For businesses                                                      */
 /* ------------------------------------------------------------------ */
 
@@ -383,39 +465,35 @@ export const business = {
 export const parents = {
   heading: "Information for parents and guardians",
   intro:
-    "Most of our students are young people whose families are paying the fee. You deserve straight answers before you spend that money. Visit the campus, meet the staff, and ask us anything.",
+    "Most of our students are young people whose families are paying the fee. You deserve straight answers before you spend that money. Ask us anything on WhatsApp or the admissions call.",
   items: [
     {
       q: "Are boys and girls taught separately?",
-      a: "Yes, always. We have three separate halls and girls are taught in their own hall, in their own batches, at their own timings. There is no shared classroom at any point.",
+      a: "Yes. Male and female students are placed in separate online cohorts and timings. There is no mixed live classroom.",
     },
     {
-      q: "Is the campus safe and suitable?",
-      a: "It is our own building on Depalpur–Kasur Road beside Govt. Associate College for Women, Allahabad. Furnished, air conditioned, with separate halls and offices. You are welcome to visit before enrolling, and to visit again at any time while your child is studying.",
+      q: "Is this safe for my daughter to study from home?",
+      a: "Classes are live online from home. She needs a laptop and internet — not travel to a shared city campus. You can join the admissions call with her.",
     },
     {
       q: "What will my child actually be able to do afterwards?",
-      a: "Build automation and AI systems that businesses pay for — either working from home for clients abroad, or in a job here. In Foundation they learn the groundwork; in Practitioner they build a real system for a real business.",
+      a: "Build automation and AI systems that businesses pay for — freelancing from home or becoming harder to replace at work. Foundation covers groundwork; Practitioner ships a real supervised deliverable.",
     },
     {
       q: "How much will they earn?",
-      a: "We will not give you a figure and call it a promise. A strong Practitioner graduate typically earns their first paid work within two to three months of finishing, often Rs. 25,000–60,000 per month in the early stages, growing after that. Some earn nothing. We publish both numbers after every batch — ask to see them.",
+      a: "We will not give you a figure and call it a promise. A strong Practitioner graduate often earns first paid work within two to three months of finishing, commonly Rs. 25,000–60,000 early on. Some earn nothing. We publish both numbers after every batch.",
     },
     {
       q: "Can they work from home?",
-      a: "Yes, and for many families that matters most — particularly for daughters. This work needs a computer and an internet connection, not travel.",
+      a: "Yes. This work needs a computer and internet, not daily travel — which matters for many families.",
     },
     {
       q: "What are the fees and how are they paid?",
-      a: "Fees are charged monthly, not as one large amount. Foundation is Rs. 7,500 per month for two months. The Practitioner program is Rs. 11,000 per month for four months. Ask us about instalments and merit reductions for strong students.",
+      a: "Fees are charged monthly, not as one large amount. See the Fees section on the homepage for current figures. Ask us about instalments and merit reductions.",
     },
     {
-      q: "What if there is a harvest, or a family emergency?",
-      a: "Tell us and we will move your child to another batch rather than let them fall behind. This is a farming district and we plan for it.",
-    },
-    {
-      q: "Is this the same as the free government courses?",
-      a: "No, and if money is tight the free courses are a genuine option — we will tell you so honestly. The difference is a fixed batch in a real classroom, attendance that is followed up, work that is checked, a real assessment, and a year of support afterwards. Most people who start a free online course never finish it.",
+      q: "Is this the same as free government courses?",
+      a: "No. If money is tight, DigiSkills or NAVTTC are genuine options — we will say so. The difference is a fixed live batch, work that is checked, a real assessment, and a year of support afterwards.",
     },
   ],
 } as const;

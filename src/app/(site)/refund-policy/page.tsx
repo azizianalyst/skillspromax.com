@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Refund policy",
-  description: "SkillsProMax refund policy — written down, public, and honoured.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Refund Policy",
+  description:
+    "SkillsProMax refund policy for programs in Depalpur — written publicly and honoured. Read before you enrol.",
+  path: "/refund-policy",
+});
 
 export default function RefundPolicyPage() {
   return (

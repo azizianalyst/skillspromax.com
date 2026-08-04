@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react";
 import { site } from "@/content/site";
 import { InquiryForm } from "@/components/forms/inquiry-form";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMeta({
+  title: "Contact — Call, WhatsApp or Visit",
   description:
-    "Call, WhatsApp, email or visit SkillsProMax — near Govt. Associate College for Women, Allahabad, Depalpur–Kasur Road, Tehsil Depalpur, District Okara.",
-};
+    "Contact SkillsProMax: +92 329 1522376. Near Govt. Associate College for Women, Allahabad, Depalpur–Kasur Road, Tehsil Depalpur, District Okara. WhatsApp admissions.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

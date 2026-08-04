@@ -22,11 +22,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const password = raw?.password?.toString();
         if (!email || !password) return null;
 
-        const user = await db.user.findUnique({ where: { email } });
+        const user = await db.user.findUnique({
+          where: { email },
+          include: { studentProfile: true },
+        });
         if (!user || !user.isActive) return null;
 
         const ok = await bcrypt.compare(password, user.passwordHash);
         if (!ok) return null;
+
+        // Students need a provisioned profile before they can use the portal.
+        if (user.role === "STUDENT" && !user.studentProfile) return null;
 
         return {
           id: user.id,

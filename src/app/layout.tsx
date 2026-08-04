@@ -20,19 +20,20 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Digital & AI skills training, Depalpur, Okara`,
+    default: `AI Automation & Digital Skills Course Pakistan | ${site.name}`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Professional AI, automation and digital skills training in Tehsil Depalpur, District Okara. Separate halls for boys and girls, flexible timings, monthly fees, and real client work before you finish.",
+    "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
   keywords: [
-    "AI training Okara",
-    "digital skills Depalpur",
-    "freelancing course Okara",
-    "automation training Pakistan",
-    "computer institute Depalpur",
+    "AI automation course Pakistan",
+    "digital skills course Pakistan",
+    "freelancing course Pakistan",
+    "online AI training Pakistan",
+    "n8n course Pakistan",
     "SkillsProMax",
   ],
+  alternates: { canonical: site.url },
   openGraph: {
     type: "website",
     locale: "en_PK",
@@ -40,9 +41,19 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — Skills that pay. Taught properly.`,
     description:
-      "AI, automation and digital skills training in Tehsil Depalpur, District Okara. Real client work, honest outcomes, separate halls for boys and girls.",
+      "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work before you finish.",
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Skills that pay. Taught properly.`,
+    description:
+      "AI and automation training online across Pakistan. Apply free. WhatsApp +92 329 1522376.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
 };
 
 export default function RootLayout({

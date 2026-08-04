@@ -56,6 +56,24 @@ async function main() {
     },
   });
 
+  const instructorUser = await prisma.user.create({
+    data: {
+      email: "instructor@skillspromax.com",
+      passwordHash: await bcrypt.hash("skillspromax-dev-123", 10),
+      name: "Ahmed Raza",
+      role: "STAFF",
+      phone: "+923291522376",
+    },
+  });
+  const instructor = await prisma.staffProfile.create({
+    data: {
+      userId: instructorUser.id,
+      title: "Lead instructor",
+      bio: "Builds client automations for local businesses and teaches the same work in class.",
+      isPublic: true,
+    },
+  });
+
   type SeedApp = {
     ref: string;
     status:
@@ -282,8 +300,10 @@ async function main() {
         timeSlot: "EVENING",
         hall: "Hall 1 (Boys)",
         startDate: iso("2026-08-03"),
+        endDate: iso("2026-10-03"),
         capacity: 16,
         status: "RUNNING",
+        instructorId: instructor.id,
       },
     }),
     prisma.batch.create({
@@ -328,6 +348,7 @@ async function main() {
       feeMonthly: 13000,
       feeMonths: 2,
       status: "ACTIVE",
+      deliverableStatus: "IN_PROGRESS",
     },
   });
 
@@ -339,8 +360,10 @@ async function main() {
         amount: 13000,
         method: "BANK_TRANSFER",
         status: "VERIFIED",
-        paidAt: iso("2026-08-10"),
+        dueDate: iso("2026-06-05"),
+        paidAt: iso("2026-06-08"),
         verifiedById: admin.id,
+        reference: "BANK-0608",
       },
       {
         enrollmentId: enrollment.id,
@@ -348,13 +371,14 @@ async function main() {
         amount: 13000,
         method: "JAZZCASH",
         status: "PENDING",
-        reference: "JC8841220",
+        // Past due so local demos show overdue styling until paid.
+        dueDate: iso("2026-07-15"),
       },
     ],
   });
 
   console.log(
-    `✓ Seeded ${apps.length} applications, 4 courses, ${batches.length} batches, 1 enrolled student with 1 pending fee.`,
+    `✓ Seeded ${apps.length} applications, 4 courses, ${batches.length} batches, 1 enrolled student with 1 overdue fee.`,
   );
 }
 

@@ -2,19 +2,26 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { AlertCircle } from "lucide-react";
+import { safeCallbackUrl } from "@/lib/fees";
 
 /**
  * Client login form. Uses next-auth/react's signIn with redirect:false so we
  * can show an inline error instead of bouncing to the error page.
+ * After a successful sign-in, route by role unless a safe callbackUrl was given.
  */
 export function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
-  const callbackUrl = params.get("callbackUrl") || "/admin";
+  const explicitCallback = params.get("callbackUrl");
+  const accountError = params.get("error") === "account";
 
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    accountError
+      ? "This account is inactive or not fully set up. Ask admissions to activate your student profile."
+      : null,
+  );
   const [pending, setPending] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -29,19 +36,38 @@ export function LoginForm() {
       redirect: false,
     });
 
-    setPending(false);
-
     if (!res || res.error) {
+      setPending(false);
       setError("Incorrect email or password. If you have forgotten it, ask an administrator.");
       return;
     }
 
-    router.push(callbackUrl);
+    // Retry briefly — session cookie can lag one tick after signIn.
+    let role: string | undefined;
+    for (let i = 0; i < 5; i++) {
+      const session = await getSession();
+      role = session?.user?.role;
+      if (role) break;
+      await new Promise((r) => setTimeout(r, 50));
+    }
+
+    const home = role === "STUDENT" ? "/portal" : "/admin";
+    const dest = safeCallbackUrl(explicitCallback, home);
+
+    // Students must not land in admin via a crafted callbackUrl
+    const finalDest =
+      role === "STUDENT" && dest.startsWith("/admin")
+        ? "/portal"
+        : role !== "STUDENT" && dest.startsWith("/portal")
+          ? "/admin"
+          : dest;
+
+    router.push(finalDest);
     router.refresh();
   }
 
   return (
-    <form onSubmit={onSubmit} className="card p-6 md:p-7" noValidate>
+    <form action="#" method="post" onSubmit={onSubmit} className="card p-6 md:p-7" noValidate>
       {error && (
         <div
           role="alert"
@@ -64,7 +90,6 @@ export function LoginForm() {
             autoComplete="email"
             required
             className="field"
-            defaultValue="admin@skillspromax.com"
           />
         </div>
         <div>

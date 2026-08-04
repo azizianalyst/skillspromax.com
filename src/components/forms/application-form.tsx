@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState } from "react";
-import Link from "next/link";
 import { CheckCircle2, AlertCircle, Phone, MessageCircle } from "lucide-react";
 import { submitApplication, type FormState } from "@/app/actions/apply";
 import { programs, site } from "@/content/site";
@@ -30,7 +29,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">
           Your reference number is{" "}
           <strong className="tnum text-ink">{state.reference}</strong>. Please keep it —
-          quote it when you call or visit.
+          quote it when you call or WhatsApp.
         </p>
 
         <ol className="mt-7 space-y-3 border-t border-line pt-6 text-[0.9375rem] text-ink-2">
@@ -40,7 +39,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
           </li>
           <li className="flex gap-3">
             <span className="tnum font-display text-accent">2.</span>
-            We will explain the program, fees and timings, and answer your questions.
+            We will explain the program, fees and online timings, and answer your questions.
           </li>
           <li className="flex gap-3">
             <span className="tnum font-display text-accent">3.</span>
@@ -54,15 +53,17 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
         </p>
 
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={site.whatsapp.href} className="btn btn-primary">
-            <MessageCircle className="size-4" aria-hidden /> WhatsApp us
+          <a
+            href={`${site.whatsapp.href}?text=${encodeURIComponent(
+              `Assalam-o-Alaikum, I applied to SkillsProMax. Reference: ${state.reference}`,
+            )}`}
+            className="btn btn-primary"
+          >
+            <MessageCircle className="size-4" aria-hidden /> WhatsApp with reference
           </a>
           <a href={site.phone.href} className="btn btn-outline">
             <Phone className="size-4" aria-hidden /> {site.phone.display}
           </a>
-          <Link href="/campus" className="btn btn-ghost">
-            Visit the campus →
-          </Link>
         </div>
       </div>
     );
@@ -174,8 +175,8 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               ))}
             </div>
             <p className="hint">
-              We ask only to place you in the correct batch. Boys and girls are taught in
-              separate halls, always.
+              We ask only to place you in the correct batch. Male and female students are
+              taught in separate cohorts.
             </p>
             <FieldError errors={e.gender} />
           </div>
@@ -238,8 +239,17 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
           </div>
 
           <div>
-            <label className="label" htmlFor="city">City or village</label>
-            <input id="city" name="city" className="field" placeholder="e.g. Allahabad, Depalpur" />
+            <label className="label" htmlFor="city">
+              City <span className="text-[color:var(--color-danger)]">*</span>
+            </label>
+            <input
+              id="city"
+              name="city"
+              className="field"
+              required
+              placeholder="e.g. Lahore, Karachi, Islamabad, Okara"
+              aria-invalid={!!e.city}
+            />
             <FieldError errors={e.city} />
           </div>
 

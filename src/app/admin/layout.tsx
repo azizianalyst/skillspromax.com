@@ -19,6 +19,7 @@ export default async function AdminLayout({
   if (!session?.user?.id) redirect("/login?callbackUrl=/admin");
 
   const role = session.user.role;
+  if (role === "STUDENT") redirect("/portal");
   if (role !== "ADMIN" && role !== "STAFF") {
     return (
       <div className="shell py-24 text-center">

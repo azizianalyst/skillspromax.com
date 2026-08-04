@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { programs, workshops } from "@/content/site";
+import { MessageCircle } from "lucide-react";
+import { programs, workshops, site } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
 
 const statusLabel: Record<string, string> = {
@@ -10,28 +9,28 @@ const statusLabel: Record<string, string> = {
   planned: "Coming soon",
 };
 
+function waForProgram(name: string) {
+  const text = `Assalam-o-Alaikum, I am interested in ${name} at SkillsProMax.`;
+  return `${site.whatsapp.href}?text=${encodeURIComponent(text)}`;
+}
+
 export function ProgramCards() {
   return (
-    <section id="programs" className="border-b border-line bg-sand">
+    <section id="programs" className="scroll-mt-24 border-b border-line bg-sand">
       <div className="shell section">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Programs</p>
-            <h2 className="display-lg mt-5">Start where you actually are.</h2>
-            <p className="lede mt-5">
-              Four programs on one ladder — not a catalogue of unrelated courses. Complete
-              beginners start at Foundation. People already freelancing start at Re-skill.
-              People in jobs take Advance in the evenings.
-            </p>
-          </div>
-          <Link href="/programs" className="btn btn-outline">
-            Compare all programs
-          </Link>
+        <div className="max-w-2xl">
+          <p className="eyebrow">Programs</p>
+          <h2 className="display-lg mt-5">Start where you actually are.</h2>
+          <p className="lede mt-5">
+            Four programs on one ladder — not a catalogue of unrelated courses. Complete
+            beginners start at Foundation. People already freelancing start at Re-skill.
+            People in jobs take Advance in the evenings.
+          </p>
         </div>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {programs.map((p) => (
-            <article key={p.slug} className="card card-hover flex flex-col overflow-hidden">
+            <article key={p.slug} className="card flex flex-col overflow-hidden">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-sand-deep">
                 <Image
                   src={p.image}
@@ -66,7 +65,8 @@ export function ProgramCards() {
                   <div>
                     <dt className="text-xs uppercase tracking-wider text-faint">Fee</dt>
                     <dd className="mt-1 text-ink tnum">
-                      {formatPkr(p.feeMonthly)}<span className="text-muted">/month</span>
+                      {formatPkr(p.feeMonthly)}
+                      <span className="text-muted">/month</span>
                       <span className="block text-xs text-muted">
                         {p.feeMonths} months · {formatPkr(p.feeMonthly * p.feeMonths)} total
                       </span>
@@ -74,19 +74,20 @@ export function ProgramCards() {
                   </div>
                 </dl>
 
-                <Link
-                  href={`/programs/${p.slug}`}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
-                >
-                  Full curriculum and honest outcomes
-                  <ArrowRight className="size-3.5" aria-hidden />
-                </Link>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a href="/#apply" className="btn btn-primary btn-sm">
+                    Apply for this
+                  </a>
+                  <a href={waForProgram(p.name)} className="btn btn-outline btn-sm">
+                    <MessageCircle className="size-3.5" aria-hidden />
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </article>
           ))}
         </div>
 
-        {/* Workshops */}
         <div id="workshops" className="card mt-5 p-7">
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">

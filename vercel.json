@@ -1,0 +1,4 @@
+{
+  "buildCommand": "cp prisma/schema.postgres.prisma prisma/schema.prisma && prisma generate && next build",
+  "framework": "nextjs"
+}

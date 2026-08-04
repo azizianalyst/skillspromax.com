@@ -3,12 +3,14 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { parents, site } from "@/content/site";
 import { JsonLd, faqSchema } from "@/lib/schema";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For parents",
+export const metadata: Metadata = pageMeta({
+  title: "For Parents — Separate Halls & Monthly Fees",
   description:
-    "Straight answers for parents and guardians: separate halls for boys and girls, fees charged monthly, what your child will be able to do, and what they can realistically earn.",
-};
+    "Answers for parents in Depalpur and Okara: separate halls for boys and girls, monthly fees, what your child will learn, and honest earnings expectations. Visit the campus.",
+  path: "/parents",
+});
 
 export default function ParentsPage() {
   return (

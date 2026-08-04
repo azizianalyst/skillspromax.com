@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy",
-  description: "How SkillsProMax handles your personal information.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Privacy Policy",
+  description:
+    "How SkillsProMax handles personal information from applications, enquiries and student accounts in Depalpur, Okara.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

@@ -45,7 +45,7 @@ export const applicationSchema = z.object({
     .email("That email does not look right")
     .optional()
     .or(z.literal("").transform(() => undefined)),
-  city: optionalText(120),
+  city: z.string().trim().min(2, "Please enter your city").max(120),
   education: optionalText(160),
   programSlug: z.enum(slugs, {
     errorMap: () => ({ message: "Please choose a program" }),

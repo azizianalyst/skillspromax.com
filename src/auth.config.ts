@@ -20,13 +20,38 @@ export const authConfig = {
     /** Route gating. Runs on the edge via middleware. */
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
+      const role = (auth?.user as { role?: string } | undefined)?.role;
       const isAdminArea = nextUrl.pathname.startsWith("/admin");
+      const isPortalArea = nextUrl.pathname.startsWith("/portal");
       const isLoginPage = nextUrl.pathname.startsWith("/login");
 
-      // Already-signed-in users are bounced off /login.
-      if (isLoginPage) return !isLoggedIn;
-      // /admin requires a session. Role is enforced again in the admin layout.
-      if (isAdminArea) return isLoggedIn;
+      // Allow the login page when explaining a broken account (after signOut).
+      const accountError = nextUrl.searchParams.get("error") === "account";
+
+      if (isLoginPage) {
+        if (isLoggedIn && !accountError) {
+          const dest = role === "STUDENT" ? "/portal" : "/admin";
+          return Response.redirect(new URL(dest, nextUrl));
+        }
+        return true;
+      }
+
+      if (isAdminArea) {
+        if (!isLoggedIn) return false;
+        if (role === "STUDENT") {
+          return Response.redirect(new URL("/portal", nextUrl));
+        }
+        return true;
+      }
+
+      if (isPortalArea) {
+        if (!isLoggedIn) return false;
+        if (role === "ADMIN" || role === "STAFF") {
+          return Response.redirect(new URL("/admin", nextUrl));
+        }
+        return true;
+      }
+
       return true;
     },
 
