@@ -26,7 +26,7 @@ export function ApplySection() {
             <p className="eyebrow">Apply</p>
             <h2 className="display-lg mt-4">Apply free</h2>
             <p className="lede mt-4">
-              Dubai-based. Open worldwide. No application fee — and applying does not commit you to pay.
+              Start with the essentials. Expand “Fill full application” only if you want to add more now.
             </p>
 
             <ol className="mt-8 space-y-4">
