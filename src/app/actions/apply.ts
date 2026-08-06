@@ -27,8 +27,14 @@ export async function submitApplication(
   const raw = Object.fromEntries(formData) as Record<string, string>;
 
   // Checkboxes only appear in FormData when checked.
+  // Country is collected for worldwide applicants and stored with city.
+  const cityWithCountry = [raw.city?.trim(), raw.country?.trim()]
+    .filter(Boolean)
+    .join(", ");
+
   const parsed = applicationSchema.safeParse({
     ...raw,
+    city: cityWithCountry || raw.city,
     hasComputer: raw.hasComputer === "on",
     hasInternet: raw.hasInternet === "on",
   });

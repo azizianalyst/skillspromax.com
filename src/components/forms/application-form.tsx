@@ -1,12 +1,24 @@
 "use client";
 
-import { useActionState } from "react";
-import { CheckCircle2, AlertCircle, Phone, MessageCircle } from "lucide-react";
+import { useActionState, useMemo, useState } from "react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 import { submitApplication, type FormState } from "@/app/actions/apply";
 import { programs, site } from "@/content/site";
 import { formatMoney } from "@/lib/utils";
 
 const initial: FormState = { ok: false };
+
+const paths = [
+  { id: "beginner", label: "Beginner / student", recommend: "foundation" },
+  { id: "clients", label: "Want client work", recommend: "ai-automation-practitioner" },
+  { id: "freelancer", label: "Freelancer losing rates", recommend: "re-skill" },
+  { id: "employed", label: "Already employed", recommend: "advance" },
+] as const;
 
 function FieldError({ errors }: { errors?: string[] }) {
   if (!errors?.length) return null;
@@ -20,6 +32,15 @@ function FieldError({ errors }: { errors?: string[] }) {
 
 export function ApplicationForm({ defaultProgram }: { defaultProgram?: string }) {
   const [state, action, pending] = useActionState(submitApplication, initial);
+  const [path, setPath] = useState<(typeof paths)[number]["id"] | null>(null);
+  const [programSlug, setProgramSlug] = useState(
+    defaultProgram ?? "foundation",
+  );
+
+  const selected = useMemo(
+    () => programs.find((p) => p.slug === programSlug) ?? programs[0],
+    [programSlug],
+  );
 
   if (state.ok && state.reference) {
     return (
@@ -28,29 +49,24 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
         <h2 className="display-md mt-5">Application received</h2>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">
           Your reference number is{" "}
-          <strong className="tnum text-ink">{state.reference}</strong>. Please keep it —
+          <strong className="tnum text-ink">{state.reference}</strong>. Keep it —
           quote it when you call or WhatsApp.
         </p>
 
         <ol className="mt-7 space-y-3 border-t border-line pt-6 text-[0.9375rem] text-ink-2">
           <li className="flex gap-3">
-            <span className="tnum font-display text-accent">1.</span>
-            Someone from admissions will call you within two working days.
+            <span className="tnum font-semibold text-accent">1.</span>
+            Admissions calls you within two working days.
           </li>
           <li className="flex gap-3">
-            <span className="tnum font-display text-accent">2.</span>
-            We will explain the program, fees and online timings, and answer your questions.
+            <span className="tnum font-semibold text-accent">2.</span>
+            We explain the program, USD fees, and live timings for your time zone.
           </li>
           <li className="flex gap-3">
-            <span className="tnum font-display text-accent">3.</span>
-            If it suits you, we arrange your entry assessment.
+            <span className="tnum font-semibold text-accent">3.</span>
+            If it fits, we arrange your entry assessment. If not, we say so before you pay.
           </li>
         </ol>
-
-        <p className="mt-7 border-t border-line pt-6 text-sm leading-relaxed text-muted">
-          If a different program suits you better we will say so — including if a free
-          government course is genuinely the better choice for you right now.
-        </p>
 
         <div className="mt-7 flex flex-wrap gap-3">
           <a
@@ -72,61 +88,115 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
   const e = state.errors ?? {};
 
   return (
-    <form action={action} className="card p-6 md:p-8" noValidate>
+    <form action={action} className="card relative overflow-hidden p-6 md:p-8" noValidate>
       {state.message && !state.ok && (
         <div
           role="alert"
-          className="mb-7 flex items-start gap-2.5 rounded-[var(--radius-sm)] border border-[color:var(--color-danger)] bg-[color:var(--color-danger-soft)] p-4 text-sm text-[color:var(--color-danger)]"
+          className="mb-7 flex items-start gap-2.5 rounded-xl border border-[color:var(--color-danger)] bg-[color:var(--color-danger-soft)] p-4 text-sm text-[color:var(--color-danger)]"
         >
           <AlertCircle className="mt-px size-4 shrink-0" aria-hidden />
           {state.message}
         </div>
       )}
 
-      {/* Honeypot */}
       <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Website</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
+      {/* Progress */}
+      <div className="mb-7 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-faint">
+        <span className="chip chip-accent">1 Program</span>
+        <span className="chip">2 About you</span>
+        <span className="chip">3 Practical</span>
+      </div>
+
       {/* ---------------- Program ---------------- */}
       <fieldset>
-        <legend className="font-display text-xl">1 · Which program?</legend>
+        <legend className="text-lg font-semibold text-ink">1 · Which program fits you?</legend>
         <p className="mt-1.5 text-sm text-muted">
-          Not sure? Choose the closest one — we will guide you on the call.
+          Tap who you are — we pre-select the best match. You can still change it.
         </p>
 
+        <div className="mt-4 flex flex-wrap gap-2">
+          {paths.map((p) => {
+            const selectedPath = path === p.id;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => {
+                  setPath(selectedPath ? null : p.id);
+                  if (!selectedPath) setProgramSlug(p.recommend);
+                }}
+                className={
+                  "pill " + (selectedPath ? "border-accent bg-accent-soft text-accent" : "")
+                }
+                aria-pressed={selectedPath}
+              >
+                {p.label}
+              </button>
+            );
+          })}
+        </div>
+
         <div className="mt-5 space-y-2.5">
-          {programs.map((p) => (
-            <label
-              key={p.slug}
-              className="flex cursor-pointer items-start gap-3 rounded-[var(--radius-sm)] border border-line p-4 transition-colors hover:border-line-strong has-checked:border-accent has-checked:bg-accent-soft"
-            >
-              <input
-                type="radio"
-                name="programSlug"
-                value={p.slug}
-                defaultChecked={defaultProgram === p.slug}
-                className="mt-1 accent-[color:var(--color-accent)]"
-              />
-              <span className="flex-1">
-                <span className="block text-sm font-semibold text-ink">{p.name}</span>
-                <span className="mt-0.5 block text-xs text-muted">{p.audience}</span>
-                <span className="mt-1.5 block text-xs tnum text-ink-2">
-                  {formatMoney(p.feeMonthly)}/month · {p.feeMonths} months · {p.duration}
+          {programs.map((p) => {
+            const checked = programSlug === p.slug;
+            const recommended = path
+              ? paths.find((x) => x.id === path)?.recommend === p.slug
+              : false;
+            return (
+              <label
+                key={p.slug}
+                className={
+                  "flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-colors " +
+                  (checked
+                    ? "border-accent bg-accent-soft"
+                    : "border-line hover:border-line-strong")
+                }
+              >
+                <input
+                  type="radio"
+                  name="programSlug"
+                  value={p.slug}
+                  checked={checked}
+                  onChange={() => setProgramSlug(p.slug)}
+                  className="mt-1 accent-[color:var(--color-accent)]"
+                />
+                <span className="flex-1">
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-semibold text-ink">{p.name}</span>
+                    {recommended && <span className="chip chip-accent">Best match</span>}
+                    {p.slug === "ai-automation-practitioner" && (
+                      <span className="chip">Flagship</span>
+                    )}
+                  </span>
+                  <span className="mt-0.5 block text-xs text-muted">{p.audience}</span>
+                  <span className="mt-1.5 block text-xs tnum text-ink-2">
+                    {formatMoney(p.feeMonthly)}/mo · {p.feeMonths} months · {p.duration}
+                  </span>
                 </span>
-              </span>
-            </label>
-          ))}
+              </label>
+            );
+          })}
         </div>
         <FieldError errors={e.programSlug} />
+
+        <div className="mt-4 rounded-xl border border-line bg-sand px-4 py-3 text-sm text-ink-2">
+          <p className="font-semibold text-ink">{selected.name}</p>
+          <p className="mt-1 text-xs leading-relaxed text-muted line-clamp-2">{selected.outcome}</p>
+          <p className="mt-2 tnum text-sm font-semibold text-ink">
+            {formatMoney(selected.feeMonthly)}/mo · {formatMoney(selected.feeMonthly * selected.feeMonths)} total
+          </p>
+        </div>
       </fieldset>
 
       <hr className="hair my-8" />
 
       {/* ---------------- About you ---------------- */}
       <fieldset>
-        <legend className="font-display text-xl">2 · About you</legend>
+        <legend className="text-lg font-semibold text-ink">2 · About you</legend>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <div>
@@ -145,8 +215,9 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
           </div>
 
           <div>
-            <label className="label" htmlFor="fatherName">Father&rsquo;s name</label>
-            <input id="fatherName" name="fatherName" className="field" />
+            <label className="label" htmlFor="fatherName">Guardian / parent name</label>
+            <input id="fatherName" name="fatherName" className="field" autoComplete="off" />
+            <p className="hint">Optional — useful if a parent is paying or joining the call.</p>
             <FieldError errors={e.fatherName} />
           </div>
 
@@ -161,7 +232,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               ].map(([value, label]) => (
                 <label
                   key={value}
-                  className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-sm)] border border-line px-4 py-2.5 text-sm transition-colors hover:border-line-strong has-checked:border-accent has-checked:bg-accent-soft has-checked:text-accent"
+                  className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line px-4 py-2.5 text-sm transition-colors hover:border-line-strong has-checked:border-accent has-checked:bg-accent-soft has-checked:text-accent"
                 >
                   <input
                     type="radio"
@@ -175,15 +246,14 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               ))}
             </div>
             <p className="hint">
-              We ask only to place you in the correct batch. Male and female students are
-              taught in separate cohorts.
+              Used only to place you in the correct separate online cohort.
             </p>
             <FieldError errors={e.gender} />
           </div>
 
           <div>
             <label className="label" htmlFor="phone">
-              Mobile number <span className="text-[color:var(--color-danger)]">*</span>
+              Mobile / WhatsApp <span className="text-[color:var(--color-danger)]">*</span>
             </label>
             <input
               id="phone"
@@ -191,23 +261,24 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               type="tel"
               inputMode="tel"
               className="field"
-              placeholder="0300 1234567"
+              placeholder="+971 50 000 0000"
               required
               autoComplete="tel"
               aria-invalid={!!e.phone}
             />
+            <p className="hint">Include country code if you are outside Pakistan.</p>
             <FieldError errors={e.phone} />
           </div>
 
           <div>
-            <label className="label" htmlFor="whatsapp">WhatsApp number</label>
+            <label className="label" htmlFor="whatsapp">WhatsApp (if different)</label>
             <input
               id="whatsapp"
               name="whatsapp"
               type="tel"
               inputMode="tel"
               className="field"
-              placeholder="If different from above"
+              placeholder="Same as mobile is fine"
             />
             <FieldError errors={e.whatsapp} />
           </div>
@@ -222,20 +293,34 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               autoComplete="email"
               aria-invalid={!!e.email}
             />
-            <p className="hint">Optional, but we will email your reference number.</p>
+            <p className="hint">Optional — we email your reference number if you add one.</p>
             <FieldError errors={e.email} />
           </div>
 
           <div>
-            <label className="label" htmlFor="cnic">Emirates ID / passport (optional)</label>
+            <label className="label" htmlFor="cnic">ID / passport (optional)</label>
             <input
               id="cnic"
               name="cnic"
               className="field"
-              placeholder="Optional — for admissions records"
+              placeholder="Emirates ID, passport, or national ID"
               aria-invalid={!!e.cnic}
             />
             <FieldError errors={e.cnic} />
+          </div>
+
+          <div>
+            <label className="label" htmlFor="country">
+              Country <span className="text-[color:var(--color-danger)]">*</span>
+            </label>
+            <input
+              id="country"
+              name="country"
+              className="field"
+              required
+              autoComplete="country-name"
+              placeholder="e.g. UAE, UK, Pakistan, Nigeria"
+            />
           </div>
 
           <div>
@@ -247,19 +332,20 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               name="city"
               className="field"
               required
+              autoComplete="address-level2"
               placeholder="e.g. Dubai, London, Karachi, Lagos"
               aria-invalid={!!e.city}
             />
             <FieldError errors={e.city} />
           </div>
 
-          <div>
+          <div className="sm:col-span-2">
             <label className="label" htmlFor="education">Education</label>
             <input
               id="education"
               name="education"
               className="field"
-              placeholder="e.g. FSc, BA 2nd year, BS Computer Science"
+              placeholder="e.g. High school, bachelor's, currently studying CS"
             />
             <FieldError errors={e.education} />
           </div>
@@ -270,47 +356,48 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
 
       {/* ---------------- Practical ---------------- */}
       <fieldset>
-        <legend className="font-display text-xl">3 · Practical details</legend>
+        <legend className="text-lg font-semibold text-ink">3 · Practical details</legend>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <label className="label" htmlFor="preferredSlot">Preferred timing</label>
+            <label className="label" htmlFor="preferredSlot">Preferred live timing</label>
             <select id="preferredSlot" name="preferredSlot" className="field" defaultValue="">
-              <option value="">No preference</option>
-              <option value="MORNING">Morning · 8:00 – 10:30 AM</option>
-              <option value="MIDDAY">Midday · 11:00 AM – 1:30 PM</option>
-              <option value="AFTERNOON">Afternoon · 2:30 – 5:00 PM</option>
-              <option value="EVENING">Evening · 5:30 – 8:00 PM</option>
+              <option value="">No preference — match my time zone</option>
+              <option value="MORNING">Morning (Gulf time)</option>
+              <option value="MIDDAY">Midday (Gulf time)</option>
+              <option value="AFTERNOON">Afternoon (Gulf time)</option>
+              <option value="EVENING">Evening (Gulf time)</option>
             </select>
             <p className="hint">
-              During wheat and potato harvest we will move your batch rather than lose you.
+              We run live online batches and will place you in a slot that works for your country.
             </p>
           </div>
 
-          <label className="flex cursor-pointer items-start gap-3 rounded-[var(--radius-sm)] border border-line p-4">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-line p-4">
             <input
               type="checkbox"
               name="hasComputer"
               className="mt-0.5 accent-[color:var(--color-accent)]"
             />
             <span className="text-sm text-ink-2">
-              I have my own laptop or computer
+              I have a laptop or computer for class
               <span className="mt-0.5 block text-xs text-muted">
-                Not required — we have machines at the campus.
+                Required for live online sessions and practice.
               </span>
             </span>
           </label>
 
-          <label className="flex cursor-pointer items-start gap-3 rounded-[var(--radius-sm)] border border-line p-4">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-line p-4">
             <input
               type="checkbox"
               name="hasInternet"
               className="mt-0.5 accent-[color:var(--color-accent)]"
+              defaultChecked
             />
             <span className="text-sm text-ink-2">
-              I have internet at home
+              I have stable internet for video calls
               <span className="mt-0.5 block text-xs text-muted">
-                Useful for practice, but not a condition of admission.
+                Needed to join live sessions from anywhere.
               </span>
             </span>
           </label>
@@ -321,18 +408,16 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               id="howHeard"
               name="howHeard"
               className="field"
-              placeholder="Facebook, a friend, passed the building…"
+              placeholder="Google, Instagram, a friend, WhatsApp…"
             />
           </div>
 
           <div className="sm:col-span-2">
             <label className="label" htmlFor="motivation">
-              Why do you want to join? What would you like to be earning a year from now?
+              Why do you want to join — and what does success look like in a year?
             </label>
             <textarea id="motivation" name="motivation" rows={4} className="field" />
-            <p className="hint">
-              A few honest lines is plenty. We read every one of these.
-            </p>
+            <p className="hint">A few honest lines is enough. We read every one.</p>
             <FieldError errors={e.motivation} />
           </div>
         </div>
@@ -355,11 +440,11 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
       <FieldError errors={e.consent} />
 
       <button type="submit" disabled={pending} className="btn btn-primary btn-lg mt-7 w-full">
-        {pending ? "Sending…" : "Submit application"}
+        {pending ? "Sending…" : `Submit application · ${selected.name}`}
       </button>
 
       <p className="mt-4 text-center text-xs leading-relaxed text-muted">
-        No fee is due at this stage. Applying does not commit you to anything.
+        No fee due now. Applying does not commit you. Fees are quoted in USD on the call.
       </p>
     </form>
   );
