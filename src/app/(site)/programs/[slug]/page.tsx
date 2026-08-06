@@ -141,20 +141,33 @@ export default async function ProgramPage({
             <h2 className="display-lg mt-5">What you will actually do.</h2>
           </div>
 
-          <ol className="mt-12 space-y-8">
+          <ol className="mt-12 space-y-10">
             {program.modules.map((m, i) => (
-              <li key={m.title} className="grid gap-4 border-t border-line pt-6 md:grid-cols-12">
-                <div className="md:col-span-1">
-                  <span className="font-display text-2xl text-accent-line tnum">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+              <li key={m.title} className="border-t border-line pt-8">
+                <div className="grid gap-4 md:grid-cols-12">
+                  <div className="md:col-span-1">
+                    <span className="font-display text-2xl text-accent tnum">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="md:col-span-4">
+                    <h3 className="font-display text-xl text-ink">{m.title}</h3>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{m.body}</p>
+                  </div>
+                  <ul className="grid gap-3 sm:grid-cols-2 md:col-span-7">
+                    {m.subModules.map((sub, j) => (
+                      <li key={sub.title} className="border border-line bg-canvas p-4">
+                        <p className="tnum text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-faint">
+                          {String(i + 1).padStart(2, "0")}.{String(j + 1).padStart(2, "0")}
+                        </p>
+                        <h4 className="mt-1.5 text-sm font-semibold text-ink">{sub.title}</h4>
+                        <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-muted">
+                          {sub.body}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-ink md:col-span-4">
-                  {m.title}
-                </h3>
-                <p className="text-[0.9375rem] leading-relaxed text-ink-2 md:col-span-7">
-                  {m.body}
-                </p>
               </li>
             ))}
           </ol>

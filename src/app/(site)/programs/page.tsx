@@ -125,11 +125,26 @@ export default function ProgramsPage() {
                   </p>
                 </div>
 
-                <ul className="mt-6 grid gap-x-10 gap-y-5 sm:grid-cols-2">
-                  {p.modules.map((m) => (
-                    <li key={m.title} className="border-t border-line pt-4">
-                      <h4 className="text-sm font-semibold text-ink">{m.title}</h4>
+                <ul className="mt-6 space-y-6">
+                  {p.modules.map((m, i) => (
+                    <li key={m.title} className="border-t border-line pt-5">
+                      <h4 className="text-sm font-semibold text-ink">
+                        <span className="mr-2 text-accent tnum">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {m.title}
+                      </h4>
                       <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-muted">{m.body}</p>
+                      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {m.subModules.map((sub) => (
+                          <li key={sub.title} className="border border-line bg-canvas px-3 py-3">
+                            <p className="text-[0.8125rem] font-semibold text-ink">{sub.title}</p>
+                            <p className="mt-1 text-[0.75rem] leading-relaxed text-muted">
+                              {sub.body}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
                     </li>
                   ))}
                 </ul>

@@ -3,6 +3,7 @@ import { Hero } from "@/components/home/hero";
 import { Proof } from "@/components/home/proof";
 import { Differentiators } from "@/components/home/differentiators";
 import { ProgramCards } from "@/components/home/program-cards";
+import { SkillsModules } from "@/components/home/skills-modules";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { Comparison } from "@/components/home/comparison";
 import { FeesSection } from "@/components/home/fees-section";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Proof />
       <HowItWorks />
       <ProgramCards />
+      <SkillsModules />
       <Differentiators />
       <Comparison />
       <FeesSection />

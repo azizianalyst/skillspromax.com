@@ -60,6 +60,7 @@ export const site = {
 
 export const nav = [
   { label: "Programs", href: "/#programs" },
+  { label: "Skills", href: "/#skills" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Fees", href: "/#fees" },
   { label: "FAQ", href: "/#faq" },
@@ -168,6 +169,18 @@ export const honestComparison = {
 /* Programs                                                            */
 /* ------------------------------------------------------------------ */
 
+export type SkillSubModule = {
+  title: string;
+  body: string;
+};
+
+export type SkillModule = {
+  title: string;
+  body: string;
+  /** Nested lessons / skill units inside this module */
+  subModules: SkillSubModule[];
+};
+
 export type Program = {
   slug: string;
   name: string;
@@ -182,7 +195,7 @@ export type Program = {
   summary: string;
   outcome: string;
   honestNote: string;
-  modules: { title: string; body: string }[];
+  modules: SkillModule[];
   forYouIf: string[];
   notForYouIf: string[];
 };
@@ -206,12 +219,66 @@ export const programs: Program[] = [
     honestNote:
       "This will not make you money on its own. It is the foundation that makes the next program work — and the entry test at the end decides whether you are ready for it.",
     modules: [
-      { title: "Professional English for client work", body: "Emails, updates, asking good questions, disagreeing politely, saying no. Work register, not grammar class. This single skill is the biggest earnings gap between equally skilled freelancers." },
-      { title: "How the internet actually works", body: "HTTP, APIs, JSON, webhooks, authentication — hands-on and without code. Without this, every tool feels like magic. With it, everything after becomes learnable." },
-      { title: "Using AI properly", body: "Context engineering rather than prompt tricks. What models are good and bad at. Verification discipline: how to know when the answer is wrong before you send it to a client." },
-      { title: "Data literacy", body: "Spreadsheets taken seriously, structured and unstructured data, cleaning messy records, basic analysis with AI assistance." },
-      { title: "Build one real thing", body: "A small working automation, start to finish, solving an actual problem. Proof to yourself that you can finish something." },
-      { title: "The market, honestly", body: "What work exists, what it pays, what is dying, what platforms really require. Most people pick a skill from a YouTube advert. Six weeks of honest market reality is worth more." },
+      {
+        title: "Professional English for client work",
+        body: "Emails, updates, asking good questions, disagreeing politely, saying no. Work register, not grammar class.",
+        subModules: [
+          { title: "Client email craft", body: "Clear subject lines, status updates, and replies that do not waste a client's time." },
+          { title: "Asking and clarifying", body: "How to ask good questions, confirm scope, and reduce rework before you start." },
+          { title: "Saying no professionally", body: "Polite pushback, boundaries, and revision limits without losing the relationship." },
+          { title: "Spoken work English", body: "Short calls, screen shares, and summarizing decisions after a meeting." },
+        ],
+      },
+      {
+        title: "How the internet actually works",
+        body: "HTTP, APIs, JSON, webhooks, authentication — hands-on and without code.",
+        subModules: [
+          { title: "HTTP and URLs", body: "Requests, responses, status codes, and what 'the server said no' really means." },
+          { title: "APIs and JSON", body: "Reading payloads, fields, nested data, and mapping one system to another." },
+          { title: "Webhooks", body: "Event-driven flows: when a form submits, a payment clears, or a lead arrives." },
+          { title: "Auth basics", body: "API keys, tokens, and why credentials must never sit in a shared spreadsheet." },
+        ],
+      },
+      {
+        title: "Using AI properly",
+        body: "Context engineering rather than prompt tricks. Verification discipline before anything reaches a client.",
+        subModules: [
+          { title: "Context engineering", body: "Give models the right brief, examples, and constraints — not one clever sentence." },
+          { title: "Model strengths and limits", body: "What current tools are good at, where they invent, and when not to trust them." },
+          { title: "Verification drills", body: "Check facts, numbers, and code-like steps before you send work onward." },
+          { title: "Safe AI habits", body: "Privacy, client data, and what never belongs in a public chat box." },
+        ],
+      },
+      {
+        title: "Data literacy",
+        body: "Spreadsheets taken seriously, structured data, cleaning messy records, basic analysis with AI assistance.",
+        subModules: [
+          { title: "Spreadsheet discipline", body: "Tables, naming, and structures that survive more than one person editing." },
+          { title: "Cleaning messy data", body: "Duplicates, dates, phone formats, and incomplete rows from real businesses." },
+          { title: "Simple analysis", body: "Totals, filters, and questions a manager would actually ask." },
+          { title: "AI-assisted checks", body: "Use AI to spot anomalies — then verify by hand before you act." },
+        ],
+      },
+      {
+        title: "Build one real thing",
+        body: "A small working automation, start to finish, solving an actual problem.",
+        subModules: [
+          { title: "Pick a real problem", body: "Choose a workflow worth finishing — not a toy demo." },
+          { title: "Map the steps", body: "Trigger, actions, outputs, and what success looks like." },
+          { title: "Build and test", body: "Assemble the flow, break it on purpose, and fix the failure paths." },
+          { title: "Handover note", body: "Write a short explanation so someone else can run what you built." },
+        ],
+      },
+      {
+        title: "The market, honestly",
+        body: "What work exists, what it pays, what is dying, and what platforms really require.",
+        subModules: [
+          { title: "Work that still pays", body: "Categories rising in 2026 versus skills whose rates have collapsed." },
+          { title: "Platform reality", body: "How Upwork and similar markets actually work — costs, rejection, and alternatives." },
+          { title: "Local vs remote demand", body: "Pakistan businesses, retainers, and international clients — honest ranges." },
+          { title: "Your next program", body: "Read your Foundation result and choose the right ladder step." },
+        ],
+      },
     ],
     forYouIf: [
       "You are in college or recently finished and want a real direction",
@@ -242,11 +309,57 @@ export const programs: Program[] = [
     honestNote:
       "Realistically, a strong graduate earns their first paid work within 60–90 days of finishing, often Rs. 25,000–60,000 in the early months. Some earn nothing. We publish both numbers.",
     modules: [
-      { title: "Weeks 1–2 · Foundations", body: "APIs, authentication, context engineering, professional AI tooling, verification discipline. Foundation graduates start ahead here." },
-      { title: "Weeks 3–5 · Build craft", body: "n8n as the primary tool, with Make and Zapier when a client requires them. Real business workflows: lead routing, records sync, invoicing, reporting, PDF and document processing." },
-      { title: "Weeks 6–10 · Production discipline", body: "The difference between a demo and something a business will pay for: error handling, retries, logging, cost control, credentials and security. AI agents with human checkpoints. Your real client brief begins here." },
-      { title: "Weeks 11–14 · Client delivery", body: "Turning a vague request into a fixed scope with acceptance criteria. Documentation, handover, support and retainer design. You ship your brief and write it up." },
-      { title: "Weeks 15–16 · Getting paid", body: "Pricing properly instead of racing to the bottom. PSEB registration, FBR NTN, Payoneer, contracts, invoices, disputes. Platform reality: Upwork verification, how Connects actually cost, why accounts get rejected, and the routes that do not need a platform at all." },
+      {
+        title: "Weeks 1–2 · Foundations",
+        body: "APIs, authentication, context engineering, professional AI tooling, verification discipline.",
+        subModules: [
+          { title: "API fluency lab", body: "Auth, headers, and reading real business APIs without guessing." },
+          { title: "Context engineering studio", body: "Briefs, examples, and guardrails for production AI use." },
+          { title: "Tooling setup", body: "Professional workspace, credentials hygiene, and cost awareness." },
+          { title: "Verification standard", body: "The checklist before any output reaches a client." },
+        ],
+      },
+      {
+        title: "Weeks 3–5 · Build craft",
+        body: "n8n as the primary tool, with Make and Zapier when a client requires them.",
+        subModules: [
+          { title: "n8n core craft", body: "Nodes, data mapping, branches, and reusable patterns." },
+          { title: "Lead and CRM flows", body: "Capture, route, enrich, and notify without losing a lead." },
+          { title: "Records and invoicing", body: "Sync sheets, invoices, and status updates across tools." },
+          { title: "Documents and PDFs", body: "Parse, extract, and file documents into usable records." },
+        ],
+      },
+      {
+        title: "Weeks 6–10 · Production discipline",
+        body: "Error handling, retries, logging, cost control, credentials and security. AI agents with human checkpoints.",
+        subModules: [
+          { title: "Failure paths", body: "Retries, alerts, and what happens when an API is down." },
+          { title: "Logging and costs", body: "See what ran, what failed, and what it cost to run." },
+          { title: "Security basics", body: "Secrets, access, and client data handled like a real vendor." },
+          { title: "Agent checkpoints", body: "AI steps with human approval before irreversible actions." },
+          { title: "Client brief kickoff", body: "Your real business brief begins under supervision." },
+        ],
+      },
+      {
+        title: "Weeks 11–14 · Client delivery",
+        body: "Scope, acceptance criteria, documentation, handover, support and retainer design.",
+        subModules: [
+          { title: "Scope writing", body: "Turn a vague request into fixed deliverables and acceptance tests." },
+          { title: "Build to ship", body: "Finish the client system to a standard they will keep paying for." },
+          { title: "Documentation pack", body: "Handover notes, runbooks, and support boundaries." },
+          { title: "Case study write-up", body: "Measurable result, before/after, and proof you can show next clients." },
+        ],
+      },
+      {
+        title: "Weeks 15–16 · Getting paid",
+        body: "Pricing, PSEB, FBR NTN, Payoneer, contracts, invoices, and platform reality.",
+        subModules: [
+          { title: "Pricing and retainers", body: "Stop racing to the bottom — price systems, not hours." },
+          { title: "Pakistan payment rails", body: "PSEB, NTN, Payoneer, and invoices that actually clear." },
+          { title: "Contracts and disputes", body: "Simple agreements, revisions, and what to do when payment stalls." },
+          { title: "Platform vs direct", body: "Upwork costs and rejection — plus routes that do not need a platform." },
+        ],
+      },
     ],
     forYouIf: [
       "You can commit four days a week for four months",
@@ -276,12 +389,66 @@ export const programs: Program[] = [
     honestNote:
       "Freelance writing postings fell around 30% within eight months of ChatGPT. Translation postings fell about 19%, with rates down to roughly half. If this is happening to you, waiting is the expensive option.",
     modules: [
-      { title: "Where your existing skill still has value", body: "Judgment, taste, client relationships and domain knowledge do not commoditise. Tool execution does. We separate the two honestly." },
-      { title: "What to stop selling, and what to sell instead", body: "Mapping your current offer onto work that is still growing — automation, systems, AI-assisted operations and content production at volume." },
-      { title: "Automation and AI build craft", body: "n8n, APIs and AI agents, taught fast because you already understand client work." },
-      { title: "Production discipline", body: "Error handling, logging, cost control and security — what lets you charge retainer rates instead of hourly." },
-      { title: "Repricing without losing the account", body: "How to raise your rate with an existing client, what to say, and what to offer in exchange." },
-      { title: "Proof and positioning", body: "Rebuilding your portfolio and profile around the new offer." },
+      {
+        title: "Where your existing skill still has value",
+        body: "Judgment, taste, client relationships and domain knowledge do not commoditise. Tool execution does.",
+        subModules: [
+          { title: "Skill audit", body: "Separate what still earns from what AI has made cheap." },
+          { title: "Client equity", body: "Map relationships and trust you already own." },
+          { title: "Domain advantage", body: "Industry knowledge that tools cannot replace overnight." },
+          { title: "Portfolio truth", body: "What to keep showing — and what to retire." },
+        ],
+      },
+      {
+        title: "What to stop selling, and what to sell instead",
+        body: "Map your current offer onto work that is still growing.",
+        subModules: [
+          { title: "Dying offers", body: "Identify services whose rates and demand are collapsing." },
+          { title: "Growth offers", body: "Automation, systems, and AI-assisted operations that retain." },
+          { title: "Offer rewrite", body: "A clear one-page service description a client can buy." },
+          { title: "Package tiers", body: "Starter, standard, and retainer versions of the new offer." },
+        ],
+      },
+      {
+        title: "Automation and AI build craft",
+        body: "n8n, APIs and AI agents, taught fast because you already understand client work.",
+        subModules: [
+          { title: "Fast n8n path", body: "Build patterns freelancers need most — without beginner fluff." },
+          { title: "API glue work", body: "Connect the tools your clients already use." },
+          { title: "AI inside workflows", body: "Useful agents with human review, not demos." },
+          { title: "Demo to deliverable", body: "Turn practice builds into client-ready systems." },
+        ],
+      },
+      {
+        title: "Production discipline",
+        body: "Error handling, logging, cost control and security — what lets you charge retainer rates.",
+        subModules: [
+          { title: "Reliability", body: "Retries, alerts, and monitoring for paid systems." },
+          { title: "Cost control", body: "Keep AI and API spend predictable for retainers." },
+          { title: "Security habit", body: "Credentials and client data handled like a vendor." },
+          { title: "Support window", body: "Define what is included after go-live." },
+        ],
+      },
+      {
+        title: "Repricing without losing the account",
+        body: "How to raise your rate with an existing client, what to say, and what to offer.",
+        subModules: [
+          { title: "Value narrative", body: "Explain the new offer in language the client already trusts." },
+          { title: "Transition plan", body: "Move from old deliverables to new systems without a cold cut." },
+          { title: "Rate conversation", body: "Scripts and timing for a clean raise discussion." },
+          { title: "If they say no", body: "Fallback packages and when to walk away." },
+        ],
+      },
+      {
+        title: "Proof and positioning",
+        body: "Rebuild your portfolio and profile around the new offer.",
+        subModules: [
+          { title: "Case rewrite", body: "Turn past work into proof for systems and outcomes." },
+          { title: "Profile overhaul", body: "Headlines, services, and samples that match the new offer." },
+          { title: "Outbound kit", body: "Messages for warm clients and warm referrals." },
+          { title: "90-day plan", body: "What to sell first after you finish Re-skill." },
+        ],
+      },
     ],
     forYouIf: [
       "Your freelance income has dropped in the last two years",
@@ -310,11 +477,56 @@ export const programs: Program[] = [
     honestNote:
       "We cannot promise you a promotion — that decision belongs to your employer. What we can do is make sure you have something real to show them.",
     modules: [
-      { title: "Automating your own function", body: "Finance, HR, operations, sales, marketing or support — we work on your actual job, not a generic example." },
-      { title: "AI fluency you can defend", body: "Using AI to a standard you can justify to a manager, including verification, data handling and where not to use it." },
-      { title: "Build it inside your workplace", body: "You bring the problem. You leave with a working tool that solves it." },
-      { title: "The business case", body: "Cost, risk, data protection, what to pilot first, and how to measure it." },
-      { title: "Presenting upward", body: "The skill that turns good work into recognition." },
+      {
+        title: "Automating your own function",
+        body: "Finance, HR, operations, sales, marketing or support — we work on your actual job.",
+        subModules: [
+          { title: "Function map", body: "List weekly tasks and find the ones that waste the most hours." },
+          { title: "Automation candidates", body: "Pick work that is repetitive, rules-based, and measurable." },
+          { title: "Stakeholder fit", body: "Who must approve, who will use it, and who can block it." },
+          { title: "Pilot choice", body: "One problem small enough to finish inside the program." },
+        ],
+      },
+      {
+        title: "AI fluency you can defend",
+        body: "Using AI to a standard you can justify to a manager.",
+        subModules: [
+          { title: "Defensible prompts", body: "Briefs you can explain in a meeting without sounding vague." },
+          { title: "Verification for managers", body: "How you prove the output is safe enough for work use." },
+          { title: "Data handling", body: "What never goes into public tools — and safer alternatives." },
+          { title: "Where not to use AI", body: "Judgment calls that protect your reputation at work." },
+        ],
+      },
+      {
+        title: "Build it inside your workplace",
+        body: "You bring the problem. You leave with a working tool that solves it.",
+        subModules: [
+          { title: "Workplace constraints", body: "Access, tools, and politics that shape what you can ship." },
+          { title: "Build sprint", body: "Assemble the automation against your real inputs." },
+          { title: "User test", body: "Have a colleague run it and capture friction." },
+          { title: "Stabilise", body: "Fix the top failure cases before you present upward." },
+        ],
+      },
+      {
+        title: "The business case",
+        body: "Cost, risk, data protection, what to pilot first, and how to measure it.",
+        subModules: [
+          { title: "Hours and money", body: "Estimate time saved and soft costs honestly." },
+          { title: "Risk register", body: "Data, errors, and dependency risks in plain language." },
+          { title: "Pilot plan", body: "Scope, duration, and success criteria for leadership." },
+          { title: "Measure after", body: "Simple metrics you can report in 30 days." },
+        ],
+      },
+      {
+        title: "Presenting upward",
+        body: "The skill that turns good work into recognition.",
+        subModules: [
+          { title: "One-page narrative", body: "Problem, solution, result — no slide theatre." },
+          { title: "Demo discipline", body: "Show the live tool, not a concept deck." },
+          { title: "Ask clearly", body: "What you want: time, budget, ownership, or a wider rollout." },
+          { title: "Follow-through", body: "How to keep ownership after the first yes." },
+        ],
+      },
     ],
     forYouIf: [
       "You are employed and want more leverage in your role",

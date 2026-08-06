@@ -23,7 +23,11 @@ export function ProgramCards() {
           <h2 className="display-lg mt-5">A clear ladder. Not a catalogue.</h2>
           <p className="lede mt-5">
             Four programs on one path. Beginners start at Foundation. Freelancers move to
-            Re-skill. Working professionals take Advance in the evenings.
+            Re-skill. Working professionals take Advance in the evenings.{" "}
+            <a href="/#skills" className="font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
+              See every skill module and sub-module
+            </a>
+            .
           </p>
         </div>
 
