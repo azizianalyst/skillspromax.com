@@ -5,7 +5,7 @@
 
 export const site = {
   name: "SkillsProMax",
-  tagline: "We teach the skills that actually pay.",
+  tagline: "A serious school for skills that pay.",
   domain: "skillspromax.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://skillspromax.com",
 
@@ -71,17 +71,17 @@ export const nav = [
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Online live · All Pakistan",
-  heading: "Skills that pay. Taught properly.",
+  eyebrow: "Digital skills academy · Pakistan",
+  heading: "A serious school for skills that pay.",
   body:
-    "SkillsProMax trains people across Pakistan to earn with AI, automation and digital work — through freelancing, remote contracts, or becoming the person their employer cannot replace. Live online batches. Monthly fees. Real client work before you finish.",
+    "SkillsProMax is a live online academy for AI, automation and digital work — taught in small batches, with real projects and honest standards. Join from anywhere in Pakistan.",
   primary: { label: "Apply free", href: "/#apply" },
-  secondary: { label: "See programs", href: "/#programs" },
+  secondary: { label: "View programs", href: "/#programs" },
   points: [
-    "Live online classes — join from anywhere in Pakistan",
-    "Small batches so your work gets reviewed",
+    "Live online classes from any city in Pakistan",
+    "Small batches with reviewed student work",
     "Monthly fees — no large lump sum",
-    "You leave with real work, not just a certificate",
+    "Real deliverables before you finish",
   ],
 } as const;
 

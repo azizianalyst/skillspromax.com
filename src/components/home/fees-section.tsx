@@ -3,12 +3,12 @@ import { formatPkr } from "@/lib/utils";
 
 export function FeesSection() {
   return (
-    <section id="fees" className="scroll-mt-24 border-b border-line">
+    <section id="fees" className="scroll-mt-24 border-b border-line bg-sand">
       <div className="shell section">
         <div className="max-w-2xl">
-          <p className="eyebrow">Pricing</p>
-          <h2 className="display-md mt-4">Fees — monthly, not a lump sum</h2>
-          <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+          <p className="eyebrow">Fees</p>
+          <h2 className="display-lg mt-5">Monthly fees. Clear totals.</h2>
+          <p className="lede mt-5">
             Pay month by month. Ask on the admissions call about instalments and merit
             reductions. No application fee.
           </p>

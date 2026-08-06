@@ -16,65 +16,67 @@ function waForProgram(name: string) {
 
 export function ProgramCards() {
   return (
-    <section id="programs" className="scroll-mt-24 border-b border-line bg-sand">
+    <section id="programs" className="scroll-mt-24 border-b border-line bg-panel">
       <div className="shell section">
         <div className="max-w-2xl">
           <p className="eyebrow">Programs</p>
-          <h2 className="display-lg mt-5">Start where you actually are.</h2>
+          <h2 className="display-lg mt-5">A clear ladder. Not a catalogue.</h2>
           <p className="lede mt-5">
-            Four programs on one ladder — not a catalogue of unrelated courses. Complete
-            beginners start at Foundation. People already freelancing start at Re-skill.
-            People in jobs take Advance in the evenings.
+            Four programs on one path. Beginners start at Foundation. Freelancers move to
+            Re-skill. Working professionals take Advance in the evenings.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-2">
-          {programs.map((p) => (
-            <article key={p.slug} className="card flex flex-col overflow-hidden">
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-sand-deep">
+        <div className="mt-16 space-y-6">
+          {programs.map((p, index) => (
+            <article
+              key={p.slug}
+              className="grid overflow-hidden border border-line bg-canvas lg:grid-cols-12"
+            >
+              <div className="relative aspect-[16/11] bg-sand-deep lg:col-span-5 lg:aspect-auto lg:min-h-[18rem]">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"
                 />
-                <span
-                  className={
-                    (p.status === "open" ? "chip chip-accent" : "chip chip-amber") +
-                    " absolute right-3 top-3 bg-canvas/95 backdrop-blur-sm"
-                  }
-                >
-                  {statusLabel[p.status]}
-                </span>
               </div>
 
-              <div className="flex flex-1 flex-col p-7">
-                <h3 className="display-md">{p.name}</h3>
-                <p className="mt-1.5 text-sm text-muted">{p.audience}</p>
+              <div className="flex flex-col justify-center p-7 md:p-10 lg:col-span-7">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-faint">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className={p.status === "open" ? "chip chip-accent" : "chip chip-amber"}>
+                    {statusLabel[p.status]}
+                  </span>
+                </div>
 
-                <p className="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">
+                <h3 className="display-md mt-4">{p.name}</h3>
+                <p className="mt-2 text-sm text-muted">{p.audience}</p>
+                <p className="mt-5 max-w-xl text-[0.975rem] leading-relaxed text-ink-2">
                   {p.summary}
                 </p>
 
-                <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-5 text-sm">
+                <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-sm">
                   <div>
-                    <dt className="text-xs uppercase tracking-wider text-faint">Duration</dt>
-                    <dd className="mt-1 text-ink">{p.duration}</dd>
+                    <dt className="text-xs uppercase tracking-[0.14em] text-faint">Duration</dt>
+                    <dd className="mt-1 font-medium text-ink">{p.duration}</dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-wider text-faint">Fee</dt>
-                    <dd className="mt-1 text-ink tnum">
+                    <dt className="text-xs uppercase tracking-[0.14em] text-faint">Monthly fee</dt>
+                    <dd className="mt-1 font-medium text-ink tnum">
                       {formatPkr(p.feeMonthly)}
-                      <span className="text-muted">/month</span>
-                      <span className="block text-xs text-muted">
-                        {p.feeMonths} months · {formatPkr(p.feeMonthly * p.feeMonths)} total
+                      <span className="font-normal text-muted">
+                        {" "}
+                        · {p.feeMonths} months
                       </span>
                     </dd>
                   </div>
                 </dl>
 
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-7 flex flex-wrap gap-3">
                   <a href="/#apply" className="btn btn-primary btn-sm">
                     Apply for this
                   </a>
@@ -88,21 +90,23 @@ export function ProgramCards() {
           ))}
         </div>
 
-        <div id="workshops" className="card mt-5 p-7">
-          <div className="grid gap-8 lg:grid-cols-12">
+        <div id="workshops" className="mt-6 border border-line bg-sand p-7 md:p-10">
+          <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h3 className="display-md">{workshops.heading}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{workshops.body}</p>
-              <p className="mt-4 font-display text-2xl text-accent tnum">
+              <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">{workshops.body}</p>
+              <p className="mt-6 font-display text-3xl text-ink tnum">
                 {formatPkr(workshops.fee)}
               </p>
-              <p className="text-xs text-muted">per workshop · two days</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
+                per workshop · two days
+              </p>
             </div>
-            <ul className="grid gap-4 lg:col-span-8 sm:grid-cols-2">
+            <ul className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
               {workshops.items.map((w) => (
-                <li key={w.title} className="border-t border-line pt-4">
-                  <h4 className="text-sm font-semibold text-ink">{w.title}</h4>
-                  <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-muted">{w.detail}</p>
+                <li key={w.title} className="border-t border-line pt-5">
+                  <h4 className="font-display text-lg text-ink">{w.title}</h4>
+                  <p className="mt-2 text-[0.8125rem] leading-relaxed text-muted">{w.detail}</p>
                 </li>
               ))}
             </ul>

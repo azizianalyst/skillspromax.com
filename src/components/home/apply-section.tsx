@@ -3,13 +3,13 @@ import { site } from "@/content/site";
 
 export function ApplySection() {
   return (
-    <section id="apply" className="scroll-mt-24 border-b border-line">
+    <section id="apply" className="scroll-mt-24 border-b border-line bg-panel">
       <div className="shell section">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-4">
             <p className="eyebrow">Admissions</p>
-            <h2 className="display-md mt-4">Apply free</h2>
-            <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+            <h2 className="display-lg mt-5">Apply free</h2>
+            <p className="lede mt-5">
               No fee to apply. Tell us your city and program interest. We call within two
               working days — and we will say if a free government course is the better start
               for you.

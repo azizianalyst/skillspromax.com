@@ -1,75 +1,67 @@
-import { Check, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { hero, site } from "@/content/site";
 
 export function Hero() {
   return (
-    <section className="border-b border-line">
-      <div className="shell grid gap-14 py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-7">
-          <p className="eyebrow">{hero.eyebrow}</p>
+    <section className="relative isolate min-h-[min(92dvh,52rem)] overflow-hidden bg-ink text-white">
+      <Image
+        src="/images/programs/ai-automation-practitioner.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="hero-ken object-cover opacity-45"
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-ink via-ink/88 to-ink/55"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30"
+        aria-hidden
+      />
 
-          <h1 className="display-xl mt-6">{hero.heading}</h1>
+      <div className="shell relative flex min-h-[min(92dvh,52rem)] flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-36">
+        <p className="reveal eyebrow text-accent-line before:bg-accent-line">{hero.eyebrow}</p>
 
-          <p className="lede mt-6 max-w-xl">{hero.body}</p>
+        <p className="reveal reveal-delay-1 mt-8 font-display text-[clamp(2rem,5vw,3.25rem)] leading-none tracking-tight text-white">
+          Skills<span className="text-accent-line">Pro</span>Max
+        </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href={hero.primary.href} className="btn btn-primary btn-lg">
-              {hero.primary.label}
-            </a>
-            <a href={hero.secondary.href} className="btn btn-outline btn-lg">
-              {hero.secondary.label}
-            </a>
-            <a href={site.whatsapp.href} className="btn btn-ghost btn-lg">
-              <MessageCircle className="size-4" aria-hidden />
-              WhatsApp
-            </a>
-          </div>
+        <h1 className="reveal reveal-delay-1 mt-5 max-w-3xl font-display text-[clamp(2.4rem,6.5vw,4.5rem)] leading-[1.05] tracking-tight text-white">
+          {hero.heading}
+        </h1>
 
-          <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-            {hero.points.map((point) => (
-              <li key={point} className="flex items-start gap-2.5 text-sm text-ink-2">
-                <Check className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
-                {point}
-              </li>
-            ))}
-          </ul>
+        <p className="reveal reveal-delay-2 mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-white/75 md:text-lg">
+          {hero.body}
+        </p>
+
+        <div className="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
+          <a href={hero.primary.href} className="btn btn-lg bg-white text-ink hover:bg-white/90">
+            {hero.primary.label}
+          </a>
+          <a
+            href={hero.secondary.href}
+            className="btn btn-lg border border-white/30 text-white hover:bg-white/10"
+          >
+            {hero.secondary.label}
+          </a>
+          <a
+            href={site.whatsapp.href}
+            className="btn btn-lg text-white/80 hover:text-white"
+          >
+            WhatsApp
+          </a>
         </div>
 
-        <div className="lg:col-span-5">
-          <div className="card overflow-hidden">
-            <div className="border-b border-line bg-sand px-6 py-5">
-              <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-                How you join
-              </p>
-              <p className="mt-3 font-display text-xl leading-snug">{site.location.label}</p>
-              <p className="mt-1 text-sm text-muted">
-                Live classes · Small batches · Monthly fees
-              </p>
-            </div>
-
-            <dl className="divide-y divide-line">
-              {[
-                ["Format", "Live online — attend from any city in Pakistan"],
-                ["Batches", "Separate cohorts for male and female students"],
-                ["Size", "Capped groups so your work is reviewed"],
-                ["Fees", "Charged monthly, not as one large amount"],
-              ].map(([term, detail]) => (
-                <div key={term} className="grid grid-cols-3 gap-4 px-6 py-4">
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-faint">
-                    {term}
-                  </dt>
-                  <dd className="col-span-2 text-sm leading-relaxed text-ink-2">{detail}</dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="border-t border-line px-6 py-4">
-              <a href="/#apply" className="text-sm font-medium text-accent hover:underline">
-                Apply free — no fee to apply →
-              </a>
-            </div>
-          </div>
-        </div>
+        <ul className="reveal reveal-delay-3 mt-14 grid max-w-3xl gap-3 border-t border-white/15 pt-8 sm:grid-cols-2">
+          {hero.points.map((point) => (
+            <li key={point} className="flex items-start gap-3 text-sm text-white/70">
+              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent-line" aria-hidden />
+              {point}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
