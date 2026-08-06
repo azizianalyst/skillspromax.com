@@ -107,11 +107,11 @@ export function SkillsModules() {
         </div>
 
         <div className="mt-14 space-y-4">
-          {programs.map((program, index) => (
+          {programs.map((program) => (
             <SkillAccordion
               key={program.slug}
               program={program}
-              defaultOpen={index === 0}
+              defaultOpen={false}
             />
           ))}
         </div>

@@ -31,8 +31,18 @@ export function SiteFooter() {
               </li>
             ))}
             <li>
+              <a href="/#skills" className="text-muted hover:text-ink">
+                Skills modules
+              </a>
+            </li>
+            <li>
               <a href="/#fees" className="text-muted hover:text-ink">
                 Fees
+              </a>
+            </li>
+            <li>
+              <a href="/#faq" className="text-muted hover:text-ink">
+                FAQ
               </a>
             </li>
             <li>

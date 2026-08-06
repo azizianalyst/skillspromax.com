@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { Proof } from "@/components/home/proof";
-import { Differentiators } from "@/components/home/differentiators";
+import { HowItWorks } from "@/components/home/how-it-works";
 import { ProgramCards } from "@/components/home/program-cards";
 import { SkillsModules } from "@/components/home/skills-modules";
-import { HowItWorks } from "@/components/home/how-it-works";
+import { Differentiators } from "@/components/home/differentiators";
 import { Comparison } from "@/components/home/comparison";
 import { FeesSection } from "@/components/home/fees-section";
 import { FaqSection } from "@/components/home/faq-section";
-import { ApplySection } from "@/components/home/apply-section";
 import { PromisesStrip } from "@/components/home/promises-strip";
+import { ApplySection } from "@/components/home/apply-section";
 import { FinalCta } from "@/components/home/final-cta";
 import { pageMeta } from "@/lib/seo";
 
@@ -20,6 +20,10 @@ export const metadata: Metadata = pageMeta({
   path: "/",
 });
 
+/**
+ * Complete one-pager flow:
+ * Trust → process → offer → curriculum depth → proof → price → FAQ → apply.
+ */
 export default function HomePage() {
   return (
     <>
@@ -32,8 +36,8 @@ export default function HomePage() {
       <Comparison />
       <FeesSection />
       <FaqSection />
-      <ApplySection />
       <PromisesStrip />
+      <ApplySection />
       <FinalCta />
     </>
   );

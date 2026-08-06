@@ -630,6 +630,10 @@ export const homeFaq = {
       a: "Yes. We run separate cohorts and timings for male and female students. We ask gender only to place you correctly.",
     },
     {
+      q: "Is this safe for my daughter to study from home?",
+      a: "Classes are live online from home. She needs a laptop and internet — not travel to a shared city campus. You can join the admissions call with her.",
+    },
+    {
       q: "How are fees paid?",
       a: "Monthly — not one large lump sum. Exact amounts are listed under Fees on this page. Ask about instalments on the admissions call.",
     },

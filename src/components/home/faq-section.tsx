@@ -8,14 +8,17 @@ export function FaqSection() {
       <div className="shell section">
         <div className="max-w-2xl">
           <p className="eyebrow">FAQ</p>
-          <h2 className="display-md mt-4">{homeFaq.heading}</h2>
+          <h2 className="display-lg mt-5">{homeFaq.heading}</h2>
+          <p className="lede mt-5">
+            Straight answers before you apply — including for parents paying the fee.
+          </p>
         </div>
 
-        <dl className="mt-12 mx-auto max-w-3xl divide-y divide-line border-y border-line">
+        <dl className="mx-auto mt-12 max-w-3xl divide-y divide-line border-y border-line">
           {homeFaq.items.map((item) => (
-            <div key={item.q} className="py-6">
-              <dt className="font-sans text-base font-semibold text-ink">{item.q}</dt>
-              <dd className="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{item.a}</dd>
+            <div key={item.q} className="py-7">
+              <dt className="font-display text-xl text-ink">{item.q}</dt>
+              <dd className="mt-3 text-[0.975rem] leading-relaxed text-ink-2">{item.a}</dd>
             </div>
           ))}
         </dl>
