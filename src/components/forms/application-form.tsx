@@ -247,7 +247,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               name="city"
               className="field"
               required
-              placeholder="e.g. Dubai, Abu Dhabi, Sharjah, Ajman"
+              placeholder="e.g. Dubai, London, Karachi, Lagos"
               aria-invalid={!!e.city}
             />
             <FieldError errors={e.city} />

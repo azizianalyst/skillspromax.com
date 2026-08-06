@@ -26,7 +26,7 @@ export function SiteHeader() {
             Skills<span className="text-accent">Pro</span>Max
           </p>
           <p className="truncate text-[0.7rem] text-muted md:text-xs">
-            Digital skills · Dubai online
+            Digital skills · Dubai worldwide
           </p>
         </Link>
 

@@ -10,7 +10,7 @@ export function ApplySection() {
             <p className="eyebrow">Apply</p>
             <h2 className="display-lg mt-4">Apply free</h2>
             <p className="lede mt-4">
-              No fee. Tell us your city and program. We call within two working days.
+              No fee. Tell us your country, city and program. We call within two working days.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-muted">
               <li>

@@ -2,14 +2,19 @@ export function cn(...parts: (string | false | null | undefined)[]) {
   return parts.filter(Boolean).join(" ");
 }
 
-/** Public site currency (Dubai launch). */
+/** Public site currency (USD). */
+export function formatUsd(amount: number) {
+  return `$${amount.toLocaleString("en-US")}`;
+}
+
+/** @deprecated Use formatUsd — kept for any old imports. */
 export function formatAed(amount: number) {
-  return `AED ${amount.toLocaleString("en-AE")}`;
+  return formatUsd(amount);
 }
 
 /** Alias used across marketing pages. */
 export function formatMoney(amount: number) {
-  return formatAed(amount);
+  return formatUsd(amount);
 }
 
 /** Admin/portal legacy helper — still PKR for existing student records. */

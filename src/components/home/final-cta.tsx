@@ -5,7 +5,7 @@ export function FinalCta() {
   return (
     <section id="contact" className="scroll-mt-24 border-t border-line hero-bg">
       <div className="shell py-16 md:py-20">
-        <p className="eyebrow">Dubai admissions</p>
+        <p className="eyebrow">Admissions</p>
         <h2 className="display-lg mt-4 max-w-2xl">Ready to start?</h2>
         <p className="lede mt-4 max-w-xl">
           Apply free. We call within two working days and tell you honestly if this is the right fit.

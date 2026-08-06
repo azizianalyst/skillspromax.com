@@ -19,13 +19,14 @@ export function Hero() {
           </span>
           <span className="eyebrow border-amber-200 bg-amber-50 text-amber-800">
             <Star className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
-            Small batches · AED monthly
+            Small batches · USD monthly
           </span>
         </div>
 
         <h1 className="display-xl mt-8 max-w-4xl text-ink">
-          SkillsProMax — Dubai&apos;s trusted{" "}
+          SkillsProMax — Dubai-based{" "}
           <span className="text-accent">AI &amp; automation training</span>
+          {" "}for students worldwide
         </h1>
 
         <p className="lede mt-5 max-w-2xl">{hero.body}</p>

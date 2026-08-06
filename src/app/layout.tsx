@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description:
-    "Live online AI and automation training from Dubai across the UAE. Monthly fees in AED, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
+    "Live online AI and automation training from Dubai for students worldwide. Monthly fees in USD, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
   alternates: { canonical: site.url },
   openGraph: {
     type: "website",
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — Skills that pay.`,
     description:
-      "Live online AI and automation training from Dubai across the UAE. Monthly fees in AED, small batches, real client work.",
+      "Live online AI and automation training from Dubai for students worldwide. Monthly fees in USD, small batches, real client work.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Skills that pay.`,
     description:
-      "AI and automation training online from Dubai. Apply free. WhatsApp +92 329 1522376.",
+      "AI and automation training online from Dubai. Join from anywhere. Apply free. WhatsApp +92 329 1522376.",
   },
   robots: {
     index: false,

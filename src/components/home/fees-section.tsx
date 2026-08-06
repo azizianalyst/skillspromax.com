@@ -7,7 +7,7 @@ export function FeesSection() {
       <div className="shell section">
         <div className="max-w-xl">
           <p className="eyebrow">Fees</p>
-          <h2 className="display-lg mt-4">Simple monthly pricing (AED)</h2>
+          <h2 className="display-lg mt-4">Simple monthly pricing (USD)</h2>
           <p className="lede mt-4">No application fee. Ask about instalments on the call.</p>
         </div>
 

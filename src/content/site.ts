@@ -18,14 +18,14 @@ export const site = {
   phone: { display: "+92 329 1522376", href: "tel:+923291522376" },
   whatsapp: { display: "+92 329 1522376", href: "https://wa.me/923291522376" },
 
-  /** Public location — Dubai launch, online first. */
+  /** Based in Dubai — students join online from anywhere. */
   location: {
-    label: "Dubai · Online live batches",
+    label: "Dubai-based · Online worldwide",
     country: "United Arab Emirates",
     city: "Dubai",
   },
 
-  currency: "AED" as const,
+  currency: "USD" as const,
 
   /** Internal notes — not shown on the public one-pager. */
   address: {
@@ -35,24 +35,24 @@ export const site = {
     district: "Dubai",
     country: "United Arab Emirates",
     get full() {
-      return "Dubai, United Arab Emirates — online live batches";
+      return "Dubai, United Arab Emirates — online live batches worldwide";
     },
   },
 
   hours: [
-    { label: "Monday – Saturday", value: "Live online batches (evening GST slots available)" },
+    { label: "Monday – Saturday", value: "Live online batches (multiple time-zone slots)" },
     { label: "Sunday", value: "Workshops / catch-up by arrangement" },
   ],
 
   serviceArea: [
-    "Dubai",
-    "Abu Dhabi",
-    "Sharjah",
-    "Ajman",
-    "Ras Al Khaimah",
-    "Fujairah",
-    "Umm Al Quwain",
+    "Worldwide",
     "United Arab Emirates",
+    "Dubai",
+    "Middle East",
+    "Asia",
+    "Europe",
+    "Africa",
+    "Americas",
   ],
 } as const;
 
@@ -72,16 +72,16 @@ export const nav = [
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Online · Dubai",
+  eyebrow: "Dubai-based · Online worldwide",
   heading: "Learn skills that pay.",
   body:
-    "Live online AI and automation training from Dubai. Small batches. Monthly fees in AED. Real work before you finish.",
+    "Live online AI and automation training from Dubai. Join from anywhere in the world. Small batches. Monthly fees in USD. Real work before you finish.",
   primary: { label: "Apply free", href: "/#apply" },
   secondary: { label: "See programs", href: "/#programs" },
   points: [
-    "Join from Dubai or anywhere in the UAE",
+    "Join from any country — laptop and internet",
     "Small batches with reviewed work",
-    "Pay monthly in AED — no lump sum",
+    "Pay monthly in USD — no lump sum",
     "Finish with a real deliverable",
   ],
 } as const;
@@ -135,7 +135,7 @@ export const honestComparison = {
     {
       point: "Cost",
       free: "Free or low-cost recorded courses.",
-      us: "Paid monthly in AED. We are the more expensive option and we will not pretend otherwise.",
+      us: "Paid monthly in USD. We are the more expensive option and we will not pretend otherwise.",
     },
     {
       point: "Finishing",
@@ -209,7 +209,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "8 weeks",
     commitment: "3 days a week · 2 hours per session",
-    feeMonthly: 399,
+    feeMonthly: 99,
     feeMonths: 2,
     entry: "Matric or above. Basic computer familiarity. No coding needed.",
     summary:
@@ -275,7 +275,7 @@ export const programs: Program[] = [
         subModules: [
           { title: "Work that still pays", body: "Categories rising in 2026 versus skills whose rates have collapsed." },
           { title: "Platform reality", body: "How Upwork and similar markets actually work — costs, rejection, and alternatives." },
-          { title: "Local vs remote demand", body: "UAE businesses, retainers, and international clients — honest ranges." },
+          { title: "Local vs remote demand", body: "Gulf businesses, retainers, and international clients — honest ranges." },
           { title: "Your next program", body: "Read your Foundation result and choose the right ladder step." },
         ],
       },
@@ -298,7 +298,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "16 weeks",
     commitment: "4 days a week · 2.5 hours per session",
-    feeMonthly: 549,
+    feeMonthly: 149,
     feeMonths: 4,
     entry:
       "Foundation passed, or an entry assessment showing equivalent ability. Functional written English required.",
@@ -307,7 +307,7 @@ export const programs: Program[] = [
     outcome:
       "A shipped, documented system running for a real business, a written case study with a measurable result, and the commercial skills to price, invoice and get paid internationally.",
     honestNote:
-      "Realistically, a strong graduate earns their first paid work within 60–90 days of finishing, often AED 1,500–4,000 in the early months. Some earn nothing. We publish both numbers.",
+      "Realistically, a strong graduate earns their first paid work within 60–90 days of finishing, often $400–$1,100 in the early months. Some earn nothing. We publish both numbers.",
     modules: [
       {
         title: "Weeks 1–2 · Foundations",
@@ -352,7 +352,7 @@ export const programs: Program[] = [
       },
       {
         title: "Weeks 15–16 · Getting paid",
-        body: "Pricing, contracts, invoices, and platform reality for freelancers in the UAE.",
+        body: "Pricing, contracts, invoices, and platform reality for freelancers worldwide.",
         subModules: [
           { title: "Pricing and retainers", body: "Stop racing to the bottom — price systems, not hours." },
           { title: "Payment basics", body: "Invoices and getting paid locally or internationally." },
@@ -379,7 +379,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "8 weeks",
     commitment: "Evenings · 3 days a week",
-    feeMonthly: 649,
+    feeMonthly: 179,
     feeMonths: 2,
     entry: "You already earn something from freelancing or digital work.",
     summary:
@@ -467,7 +467,7 @@ export const programs: Program[] = [
     status: "waitlist",
     duration: "8 weeks",
     commitment: "Evenings and Saturday",
-    feeMonthly: 849,
+    feeMonthly: 229,
     feeMonths: 2,
     entry: "Currently employed, in any function.",
     summary:
@@ -543,11 +543,11 @@ export const workshops = {
   heading: "Weekend workshops",
   body:
     "Two days, Saturday and Sunday. The cheapest way to see how we teach before committing to a program — and useful on its own.",
-  fee: 199,
+  fee: 49,
   items: [
     { title: "Build and sell your first AI automation", detail: "Leave with one working automation and a proposal template you can send." },
     { title: "AI for business owners: what to automate first", detail: "For shop owners, traders, dairy and agri businesses, clinics and schools." },
-    { title: "Getting paid properly", detail: "Invoices, contracts and payment options for freelancers working from the UAE." },
+    { title: "Getting paid properly", detail: "Invoices, contracts and payment options for freelancers working internationally." },
     { title: "Being found by AI search", detail: "How ChatGPT, Gemini and Google AI answers decide which businesses to recommend." },
   ],
 } as const;
@@ -589,19 +589,19 @@ export const campus = {
 
 export const howItWorks = {
   heading: "How learning works",
-  body: "Live online batches you can join from Dubai or anywhere in the UAE. Small cohorts, real reviews, monthly fees in AED.",
+  body: "Live online batches from our Dubai base. Join from anywhere in the world. Small cohorts, real reviews, monthly fees in USD.",
   steps: [
     {
       title: "Apply free",
-      body: "Tell us your city, program interest and timing. No application fee.",
+      body: "Tell us your country, city, program interest and timing. No application fee.",
     },
     {
       title: "Call + assessment",
-      body: "We call within two working days, explain fees in AED honestly, and run a short entry check.",
+      body: "We call within two working days, explain fees in USD honestly, and run a short entry check.",
     },
     {
       title: "Live online batch",
-      body: "Fixed schedule with evening GST options. Attendance matters. Work is reviewed.",
+      body: "Fixed schedule with slots across time zones. Attendance matters. Work is reviewed.",
     },
     {
       title: "Ship real work",
@@ -611,23 +611,23 @@ export const howItWorks = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* One-pager FAQ (Dubai / UAE)                                         */
+/* One-pager FAQ (Dubai-based · worldwide)                             */
 /* ------------------------------------------------------------------ */
 
 export const homeFaq = {
   heading: "Questions before you apply",
   items: [
     {
-      q: "How much does SkillsProMax cost in Dubai?",
-      a: "Foundation is AED 399/month for 2 months. Practitioner is AED 549/month for 4 months. Re-skill is AED 649/month for 2 months, Advance AED 849/month for 2 months, and workshops from AED 199. There is no application fee. Ask about instalments on the admissions call.",
+      q: "How much does SkillsProMax cost?",
+      a: "Foundation is $99/month for 2 months. Practitioner is $149/month for 4 months. Re-skill is $179/month for 2 months, Advance $229/month for 2 months, and workshops from $49. Fees are in USD. There is no application fee. Ask about instalments on the admissions call.",
     },
     {
-      q: "Is SkillsProMax online or on campus in Dubai?",
-      a: "Classes are live online for students in Dubai and across the UAE. You join from home on a fixed schedule, including evening GST slots. A physical Dubai space may come later — we do not publish a street address yet.",
+      q: "Where is SkillsProMax based?",
+      a: "We are based in Dubai. Classes are live online, so you join from home on a fixed schedule. You do not need to be in Dubai — or in the UAE — to apply.",
     },
     {
-      q: "Can I join from Abu Dhabi, Sharjah or another emirate?",
-      a: "Yes. If you have a laptop, stable internet, and can attend live sessions, you can apply from anywhere in the UAE. Location does not change your fee or curriculum.",
+      q: "Can I join from any country?",
+      a: "Yes. Anyone worldwide can apply if you have a laptop, stable internet, and can attend live sessions in your time zone. Your country does not change the fee or curriculum.",
     },
     {
       q: "Are boys and girls in separate batches?",
@@ -646,7 +646,7 @@ export const homeFaq = {
       a: "No. We never promise a job or a salary. We teach skills the market pays for, review your work, and publish real batch outcomes after every cohort — including who earned nothing.",
     },
     {
-      q: "Who is this for in Dubai?",
+      q: "Who is this for?",
       a: "Students, fresh graduates, freelancers whose rates are falling, and working professionals who want AI and automation skills they can use at work or with clients. If Foundation is a better fit than Practitioner, we will say so before you pay.",
     },
     {
@@ -655,7 +655,7 @@ export const homeFaq = {
     },
     {
       q: "What happens after I apply?",
-      a: "We call within two working days, explain fees in AED, and run a short entry check. If the program is not right for you, we say so before you pay. WhatsApp +92 329 1522376 if you want to talk first.",
+      a: "We call within two working days, explain fees in USD, and run a short entry check. If the program is not right for you, we say so before you pay. WhatsApp +92 329 1522376 if you want to talk first.",
     },
   ],
 } as const;
@@ -697,7 +697,7 @@ export const parents = {
     },
     {
       q: "Is this safe for my daughter to study from home?",
-      a: "Classes are live online from home. She needs a laptop and internet — not travel to a shared city campus. You can join the admissions call with her.",
+      a: "Classes are live online from home. She needs a laptop and internet — not travel to a shared campus. You can join the admissions call with her.",
     },
     {
       q: "What will my child actually be able to do afterwards?",
@@ -705,7 +705,7 @@ export const parents = {
     },
     {
       q: "How much will they earn?",
-      a: "We will not give you a figure and call it a promise. A strong Practitioner graduate often earns first paid work within two to three months of finishing, commonly Rs. 25,000–60,000 early on. Some earn nothing. We publish both numbers after every batch.",
+      a: "We will not give you a figure and call it a promise. A strong Practitioner graduate often earns first paid work within two to three months of finishing, commonly a few hundred USD early on. Some earn nothing. We publish both numbers after every batch.",
     },
     {
       q: "Can they work from home?",
@@ -713,11 +713,11 @@ export const parents = {
     },
     {
       q: "What are the fees and how are they paid?",
-      a: "Fees are charged monthly, not as one large amount. See the Fees section on the homepage for current figures. Ask us about instalments and merit reductions.",
+      a: "Fees are charged monthly in USD, not as one large amount. See the Fees section on the homepage for current figures. Ask us about instalments and merit reductions.",
     },
     {
-      q: "Is this the same as free government courses?",
-      a: "No. If money is tight, DigiSkills or NAVTTC are genuine options — we will say so. The difference is a fixed live batch, work that is checked, a real assessment, and a year of support afterwards.",
+      q: "Is this the same as free online courses?",
+      a: "No. Free courses can be a good start if money is tight — we will say so. The difference here is a fixed live batch, work that is checked, a real assessment, and support afterwards.",
     },
   ],
 } as const;

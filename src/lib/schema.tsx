@@ -23,7 +23,7 @@ export function organizationSchema() {
     telephone: NAP.telephone,
     email: NAP.email,
     description:
-      "AI, automation and digital skills training online from Dubai across the UAE. Live batches, monthly fees in AED, real client work before completion.",
+      "AI, automation and digital skills training online from Dubai for students worldwide. Live batches, monthly fees in USD, real client work before completion.",
     areaServed: site.serviceArea.map((name) => ({ "@type": "Place", name })),
     knowsAbout: [
       "AI automation",
@@ -46,7 +46,7 @@ export function organizationSchema() {
           url: `${site.url}/#programs`,
         },
         price: p.feeMonthly * p.feeMonths,
-        priceCurrency: "AED",
+        priceCurrency: "USD",
         availability:
           p.status === "open"
             ? "https://schema.org/InStock"
@@ -75,7 +75,7 @@ export function courseSchema(slug: string) {
     offers: {
       "@type": "Offer",
       price: p.feeMonthly * p.feeMonths,
-      priceCurrency: "AED",
+      priceCurrency: "USD",
       category: "Tuition",
     },
     hasCourseInstance: {
