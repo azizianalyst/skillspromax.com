@@ -16,7 +16,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "AI Automation & Digital Skills Course Dubai",
   description:
-    "Live online AI and automation training from Dubai for students worldwide. Monthly fees in USD, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
+    "Live online AI and automation training from Dubai for students worldwide. Monthly fees in USD, small batches, real client work. Apply free — WhatsApp +971 50 208 3909.",
   path: "/",
 });
 

@@ -261,7 +261,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               type="tel"
               inputMode="tel"
               className="field"
-              placeholder="+971 50 000 0000"
+              placeholder="+971 50 208 3909"
               required
               autoComplete="tel"
               aria-invalid={!!e.phone}

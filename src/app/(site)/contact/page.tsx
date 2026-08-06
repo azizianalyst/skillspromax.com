@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Contact — Call, WhatsApp or Visit",
   description:
-    "Contact SkillsProMax: +92 329 1522376. Near Govt. Associate College for Women, Allahabad, Depalpur–Kasur Road, Tehsil Depalpur, District Okara. WhatsApp admissions.",
+    "Contact SkillsProMax: +971 50 208 3909. Dubai-based online AI and automation training. WhatsApp admissions.",
   path: "/contact",
 });
 

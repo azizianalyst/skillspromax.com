@@ -87,7 +87,7 @@ addresses, promises and the parent Q&A are all there.
 
 ### Before launch — replace these
 
-- `src/content/site.ts` → campus phone / WhatsApp (`+92 329 1522376`)
+- `src/content/site.ts` → campus phone / WhatsApp (`+971 50 208 3909`)
 - Add real photographs of the halls and building to `public/` and wire them into
   `campus/page.tsx` and the homepage hero. Real photos of *this* building matter more
   than anything else on the site — do not use stock imagery.

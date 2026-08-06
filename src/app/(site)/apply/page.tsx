@@ -6,7 +6,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Apply for Admission — Free Application",
   description:
-    "Apply free to SkillsProMax in Depalpur, Okara. Separate batches for boys and girls, monthly fees, entry assessment. No application fee. WhatsApp +92 329 1522376.",
+    "Apply free to SkillsProMax — Dubai-based online AI and automation training for students worldwide. Monthly fees in USD, entry assessment. No application fee. WhatsApp +971 50 208 3909.",
   path: "/apply",
 });
 

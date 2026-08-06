@@ -15,8 +15,8 @@ export const site = {
     support: "support@skillspromax.com",
   },
 
-  phone: { display: "+92 329 1522376", href: "tel:+923291522376" },
-  whatsapp: { display: "+92 329 1522376", href: "https://wa.me/923291522376" },
+  phone: { display: "+971 50 208 3909", href: "tel:+971502083909" },
+  whatsapp: { display: "+971 50 208 3909", href: "https://wa.me/971502083909" },
 
   /** Based in Dubai — students join online from anywhere. */
   location: {
@@ -655,7 +655,7 @@ export const homeFaq = {
     },
     {
       q: "What happens after I apply?",
-      a: "We call within two working days, explain fees in USD, and run a short entry check. If the program is not right for you, we say so before you pay. WhatsApp +92 329 1522376 if you want to talk first.",
+      a: "We call within two working days, explain fees in USD, and run a short entry check. If the program is not right for you, we say so before you pay. WhatsApp +971 50 208 3909 if you want to talk first.",
     },
   ],
 } as const;
