@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-source-sans",
-  display: "swap",
-});
-
-const libreBaskerville = Libre_Baskerville({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-libre-baskerville",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -25,14 +17,6 @@ export const metadata: Metadata = {
   },
   description:
     "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
-  keywords: [
-    "AI automation course Pakistan",
-    "digital skills course Pakistan",
-    "freelancing course Pakistan",
-    "online AI training Pakistan",
-    "n8n course Pakistan",
-    "SkillsProMax",
-  ],
   alternates: { canonical: site.url },
   openGraph: {
     type: "website",
@@ -41,7 +25,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — Skills that pay. Taught properly.`,
     description:
-      "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work before you finish.",
+      "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work.",
   },
   twitter: {
     card: "summary_large_image",
@@ -61,7 +45,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${libreBaskerville.variable}`}>
+    <html lang="en" className={manrope.variable}>
       <body className="flex min-h-dvh flex-col antialiased">{children}</body>
     </html>
   );

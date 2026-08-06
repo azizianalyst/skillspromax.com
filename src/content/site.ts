@@ -5,7 +5,7 @@
 
 export const site = {
   name: "SkillsProMax",
-  tagline: "A serious school for skills that pay.",
+  tagline: "Learn skills that pay.",
   domain: "skillspromax.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://skillspromax.com",
 
@@ -60,8 +60,6 @@ export const site = {
 
 export const nav = [
   { label: "Programs", href: "/#programs" },
-  { label: "Skills", href: "/#skills" },
-  { label: "How it works", href: "/#how-it-works" },
   { label: "Fees", href: "/#fees" },
   { label: "FAQ", href: "/#faq" },
   { label: "Apply", href: "/#apply" },
@@ -72,17 +70,17 @@ export const nav = [
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Digital skills academy · Pakistan",
-  heading: "A serious school for skills that pay.",
+  eyebrow: "Online · Pakistan",
+  heading: "Learn skills that pay.",
   body:
-    "SkillsProMax is a live online academy for AI, automation and digital work — taught in small batches, with real projects and honest standards. Join from anywhere in Pakistan.",
+    "Live online AI and automation training. Small batches. Monthly fees. Real work before you finish.",
   primary: { label: "Apply free", href: "/#apply" },
-  secondary: { label: "View programs", href: "/#programs" },
+  secondary: { label: "See programs", href: "/#programs" },
   points: [
-    "Live online classes from any city in Pakistan",
-    "Small batches with reviewed student work",
-    "Monthly fees — no large lump sum",
-    "Real deliverables before you finish",
+    "Join from any city in Pakistan",
+    "Small batches with reviewed work",
+    "Pay monthly — no lump sum",
+    "Finish with a real deliverable",
   ],
 } as const;
 

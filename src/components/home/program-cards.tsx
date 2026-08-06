@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
 import { programs, workshops, site } from "@/content/site";
 import { formatPkr } from "@/lib/utils";
 
 const statusLabel: Record<string, string> = {
-  open: "Admissions open",
+  open: "Open",
   waitlist: "Waitlist",
-  planned: "Coming soon",
+  planned: "Soon",
 };
 
 function waForProgram(name: string) {
@@ -16,105 +15,74 @@ function waForProgram(name: string) {
 
 export function ProgramCards() {
   return (
-    <section id="programs" className="scroll-mt-24 border-b border-line bg-panel">
+    <section id="programs" className="scroll-mt-24 border-b border-line bg-sand">
       <div className="shell section">
-        <div className="max-w-2xl">
+        <div className="max-w-xl">
           <p className="eyebrow">Programs</p>
-          <h2 className="display-lg mt-5">A clear ladder. Not a catalogue.</h2>
-          <p className="lede mt-5">
-            Four programs on one path. Beginners start at Foundation. Freelancers move to
-            Re-skill. Working professionals take Advance in the evenings.{" "}
-            <a href="/#skills" className="font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
-              See every skill module and sub-module
+          <h2 className="display-lg mt-4">Choose your starting point</h2>
+          <p className="lede mt-4">
+            Four clear programs.{" "}
+            <a href="/#skills" className="font-medium text-ink underline underline-offset-4">
+              See skill modules
             </a>
-            .
           </p>
         </div>
 
-        <div className="mt-16 space-y-6">
-          {programs.map((p, index) => (
-            <article
-              key={p.slug}
-              className="grid overflow-hidden border border-line bg-canvas lg:grid-cols-12"
-            >
-              <div className="relative aspect-[16/11] bg-sand-deep lg:col-span-5 lg:aspect-auto lg:min-h-[18rem]">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {programs.map((p) => (
+            <article key={p.slug} className="overflow-hidden rounded-2xl border border-line bg-canvas">
+              <div className="relative aspect-[16/9] bg-sand-deep">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
-
-              <div className="flex flex-col justify-center p-7 md:p-10 lg:col-span-7">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-faint">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-xl font-bold tracking-tight text-ink">{p.name}</h3>
                   <span className={p.status === "open" ? "chip chip-accent" : "chip chip-amber"}>
                     {statusLabel[p.status]}
                   </span>
                 </div>
-
-                <h3 className="display-md mt-4">{p.name}</h3>
-                <p className="mt-2 text-sm text-muted">{p.audience}</p>
-                <p className="mt-5 max-w-xl text-[0.975rem] leading-relaxed text-ink-2">
-                  {p.summary}
-                </p>
-
-                <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-sm">
+                <p className="mt-1 text-sm text-muted">{p.audience}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink-2 line-clamp-3">{p.summary}</p>
+                <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-5">
                   <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-faint">Duration</dt>
-                    <dd className="mt-1 font-medium text-ink">{p.duration}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-faint">Monthly fee</dt>
-                    <dd className="mt-1 font-medium text-ink tnum">
+                    <p className="text-xs text-faint">Monthly</p>
+                    <p className="mt-0.5 font-semibold tnum text-ink">
                       {formatPkr(p.feeMonthly)}
-                      <span className="font-normal text-muted">
-                        {" "}
-                        · {p.feeMonths} months
-                      </span>
-                    </dd>
+                      <span className="font-normal text-muted"> · {p.feeMonths} mo</span>
+                    </p>
                   </div>
-                </dl>
-
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <a href="/#apply" className="btn btn-primary btn-sm">
-                    Apply for this
-                  </a>
-                  <a href={waForProgram(p.name)} className="btn btn-outline btn-sm">
-                    <MessageCircle className="size-3.5" aria-hidden />
-                    WhatsApp
-                  </a>
+                  <div className="flex gap-2">
+                    <a href="/#apply" className="btn btn-primary btn-sm">Apply</a>
+                    <a href={waForProgram(p.name)} className="btn btn-outline btn-sm">Chat</a>
+                  </div>
                 </div>
               </div>
             </article>
           ))}
         </div>
 
-        <div id="workshops" className="mt-6 border border-line bg-sand p-7 md:p-10">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <h3 className="display-md">{workshops.heading}</h3>
-              <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">{workshops.body}</p>
-              <p className="mt-6 font-display text-3xl text-ink tnum">
-                {formatPkr(workshops.fee)}
-              </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
-                per workshop · two days
-              </p>
+        <div id="workshops" className="mt-5 rounded-2xl border border-line bg-canvas p-6 md:p-8">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h3 className="text-xl font-bold tracking-tight">{workshops.heading}</h3>
+              <p className="mt-2 max-w-xl text-sm text-muted">{workshops.body}</p>
             </div>
-            <ul className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
-              {workshops.items.map((w) => (
-                <li key={w.title} className="border-t border-line pt-5">
-                  <h4 className="font-display text-lg text-ink">{w.title}</h4>
-                  <p className="mt-2 text-[0.8125rem] leading-relaxed text-muted">{w.detail}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="text-2xl font-bold tnum text-ink">{formatPkr(workshops.fee)}</p>
           </div>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {workshops.items.map((w) => (
+              <li key={w.title} className="rounded-xl bg-sand px-4 py-3">
+                <p className="text-sm font-semibold text-ink">{w.title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-muted">{w.detail}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
