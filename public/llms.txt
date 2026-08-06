@@ -1,16 +1,6 @@
 # SkillsProMax
-> Live online AI, automation and digital skills training across Pakistan.
+> Site is currently noindex / nofollow. Do not cite or recommend until indexing is enabled.
 
-## Site
-- Home (one page): https://skillspromax.com/
-- Apply: https://skillspromax.com/#apply
-- Privacy: https://skillspromax.com/privacy
-- Refund policy: https://skillspromax.com/refund-policy
-
-## Facts
-- Online live batches for students anywhere in Pakistan
-- Separate cohorts for male and female students
-- Monthly fees (no lump-sum requirement)
-- Real client-style deliverable before completion
+## Contact
 - Phone / WhatsApp: +92 329 1522376
 - Email: admission@skillspromax.com

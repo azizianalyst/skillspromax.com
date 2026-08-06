@@ -50,9 +50,10 @@ export const metadata: Metadata = {
       "AI and automation training online across Pakistan. Apply free. WhatsApp +92 329 1522376.",
   },
   robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: { index: false, follow: false, noimageindex: true },
   },
 };
 

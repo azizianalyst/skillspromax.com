@@ -18,7 +18,7 @@ export function pageMeta(opts: {
   index?: boolean;
 }): Metadata {
   const url = absoluteUrl(opts.path);
-  const index = opts.index ?? true;
+  const index = opts.index ?? false;
   return {
     title: opts.title,
     description: opts.description,
@@ -38,6 +38,6 @@ export function pageMeta(opts: {
     },
     robots: index
       ? { index: true, follow: true }
-      : { index: false, follow: true },
+      : { index: false, follow: false, nocache: true },
   };
 }
