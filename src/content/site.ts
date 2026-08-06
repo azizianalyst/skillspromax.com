@@ -352,12 +352,12 @@ export const programs: Program[] = [
       },
       {
         title: "Weeks 15–16 · Getting paid",
-        body: "Pricing, PSEB, FBR NTN, Payoneer, contracts, invoices, and platform reality.",
+        body: "Pricing, contracts, invoices, and platform reality for freelancers in the UAE.",
         subModules: [
           { title: "Pricing and retainers", body: "Stop racing to the bottom — price systems, not hours." },
-          { title: "UAE payment basics", body: "Invoices, contracts, and getting paid locally or internationally — what actually works." },
+          { title: "Payment basics", body: "Invoices and getting paid locally or internationally." },
           { title: "Contracts and disputes", body: "Simple agreements, revisions, and what to do when payment stalls." },
-          { title: "Platform vs direct", body: "Upwork costs and rejection — plus routes that do not need a platform." },
+          { title: "Platform vs direct", body: "Marketplace costs and rejection — plus routes that do not need a platform." },
         ],
       },
     ],

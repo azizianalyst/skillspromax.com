@@ -1,24 +1,26 @@
 export function Proof() {
   return (
-    <section className="border-b border-line bg-sand">
+    <section className="border-b border-line">
       <div className="shell section">
         <div className="max-w-2xl">
-          <p className="eyebrow">Simple idea</p>
-          <h2 className="display-lg mt-4">Learn online from Dubai. Build real work.</h2>
+          <p className="eyebrow">Dubai · UAE</p>
+          <h2 className="display-lg mt-5">Built for people who want modern skills — not certificates.</h2>
           <p className="lede mt-5">
-            No campus travel required. Join live classes from home across the UAE, finish with a
-            supervised deliverable, and see clear monthly fees in AED.
+            Live online from Dubai. Small batches. Clear AED fees. Real deliverables before you finish.
           </p>
         </div>
 
-        <dl className="mt-12 grid gap-6 sm:grid-cols-3">
+        <dl className="mt-12 grid gap-4 sm:grid-cols-3">
           {[
-            ["Live online", "Dubai & UAE"],
-            ["Small batches", "Your work gets reviewed"],
-            ["Monthly fees", "Clear AED pricing"],
+            ["Live online", "Dubai & across the UAE"],
+            ["Small batches", "Work gets reviewed"],
+            ["AED monthly", "No lump-sum pressure"],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-xl border border-line bg-canvas p-6">
-              <dt className="text-base font-semibold text-ink">{title}</dt>
+            <div
+              key={title}
+              className="rounded-3xl border border-line bg-panel p-6 shadow-[0_1px_2px_rgba(10,15,26,0.03)]"
+            >
+              <dt className="font-display text-xl font-bold tracking-tight text-ink">{title}</dt>
               <dd className="mt-2 text-sm text-muted">{body}</dd>
             </div>
           ))}

@@ -2,20 +2,32 @@ import { hero, site } from "@/content/site";
 
 export function Hero() {
   return (
-    <section className="border-b border-line bg-canvas">
-      <div className="shell py-16 md:py-24 lg:py-28">
-        <p className="eyebrow">{hero.eyebrow}</p>
+    <section className="relative overflow-hidden border-b border-line atmosphere">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(10,15,26,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,15,26,0.04) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+        }}
+        aria-hidden
+      />
 
-        <h1 className="display-xl mt-5 max-w-3xl text-ink">
+      <div className="shell relative py-20 md:py-28 lg:py-32">
+        <p className="reveal eyebrow">{hero.eyebrow}</p>
+
+        <p className="reveal reveal-delay-1 mt-8 font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-ink">
           Skills<span className="text-accent">Pro</span>Max
-          <span className="mt-3 block font-semibold tracking-tight text-ink">
-            {hero.heading}
-          </span>
+        </p>
+
+        <h1 className="reveal reveal-delay-1 display-xl mt-4 max-w-4xl text-ink">
+          {hero.heading}
         </h1>
 
-        <p className="lede mt-6 max-w-xl">{hero.body}</p>
+        <p className="reveal reveal-delay-2 lede mt-6 max-w-xl">{hero.body}</p>
 
-        <div className="mt-9 flex flex-wrap gap-3">
+        <div className="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
           <a href={hero.primary.href} className="btn btn-primary btn-lg">
             {hero.primary.label}
           </a>
@@ -27,10 +39,13 @@ export function Hero() {
           </a>
         </div>
 
-        <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8 text-sm text-muted">
+        <ul className="reveal reveal-delay-3 mt-14 grid max-w-3xl gap-3 sm:grid-cols-2">
           {hero.points.map((point) => (
-            <li key={point} className="flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+            <li
+              key={point}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-white/70 px-4 py-3 text-sm text-ink-2 backdrop-blur-sm"
+            >
+              <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden />
               {point}
             </li>
           ))}
