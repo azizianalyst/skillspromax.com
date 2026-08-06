@@ -18,39 +18,41 @@ export const site = {
   phone: { display: "+92 329 1522376", href: "tel:+923291522376" },
   whatsapp: { display: "+92 329 1522376", href: "https://wa.me/923291522376" },
 
-  /** Public location — no street address while we launch Pakistan-wide online. */
+  /** Public location — Dubai launch, online first. */
   location: {
-    label: "Pakistan · Online live batches",
-    country: "Pakistan",
+    label: "Dubai · Online live batches",
+    country: "United Arab Emirates",
+    city: "Dubai",
   },
 
-  /** Kept for staff/GBP later — not shown on the public one-pager. */
+  currency: "AED" as const,
+
+  /** Internal notes — not shown on the public one-pager. */
   address: {
-    landmark: "Near Govt. Associate College for Women, Allahabad",
-    road: "Depalpur–Kasur Road",
-    tehsil: "Tehsil Depalpur",
-    district: "District Okara, Punjab",
-    country: "Pakistan",
+    landmark: "Dubai (online cohorts)",
+    road: "",
+    tehsil: "",
+    district: "Dubai",
+    country: "United Arab Emirates",
     get full() {
-      return `${this.landmark}, ${this.road}, ${this.tehsil}, ${this.district}`;
+      return "Dubai, United Arab Emirates — online live batches";
     },
   },
 
   hours: [
-    { label: "Monday – Saturday", value: "Live online batches (evening slots available)" },
+    { label: "Monday – Saturday", value: "Live online batches (evening GST slots available)" },
     { label: "Sunday", value: "Workshops / catch-up by arrangement" },
   ],
 
   serviceArea: [
-    "Pakistan",
-    "Lahore",
-    "Karachi",
-    "Islamabad",
-    "Rawalpindi",
-    "Faisalabad",
-    "Multan",
-    "Okara",
-    "Sahiwal",
+    "Dubai",
+    "Abu Dhabi",
+    "Sharjah",
+    "Ajman",
+    "Ras Al Khaimah",
+    "Fujairah",
+    "Umm Al Quwain",
+    "United Arab Emirates",
   ],
 } as const;
 
@@ -70,16 +72,16 @@ export const nav = [
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Online · Pakistan",
+  eyebrow: "Online · Dubai",
   heading: "Learn skills that pay.",
   body:
-    "Live online AI and automation training. Small batches. Monthly fees. Real work before you finish.",
+    "Live online AI and automation training from Dubai. Small batches. Monthly fees in AED. Real work before you finish.",
   primary: { label: "Apply free", href: "/#apply" },
   secondary: { label: "See programs", href: "/#programs" },
   points: [
-    "Join from any city in Pakistan",
+    "Join from Dubai or anywhere in the UAE",
     "Small batches with reviewed work",
-    "Pay monthly — no lump sum",
+    "Pay monthly in AED — no lump sum",
     "Finish with a real deliverable",
   ],
 } as const;
@@ -97,7 +99,7 @@ export const differentiators = [
   {
     title: "You work on real businesses before you finish",
     body:
-      "From the middle of the program, every student is given a real brief from a real business — a dairy, a potato trader, an agri-input dealer, a school, a clinic — and delivers it under supervision. You graduate with a working system and a written case study, not a printed certificate.",
+      "From the middle of the program, every student is given a real brief from a real business — a clinic, salon, trading company, logistics team, or school — and delivers it under supervision. You graduate with a working system and a written case study, not a printed certificate.",
   },
   {
     title: "Taught by people who do this work for money",
@@ -117,7 +119,7 @@ export const differentiators = [
   {
     title: "We never promise a job or an income",
     body:
-      "No guaranteed placement. No \"earn one lakh a month.\" We will show you honest ranges and honest timeframes. Any institute promising you a guaranteed income is selling you something else.",
+      "No guaranteed placement. No fake income promises. We will show you honest ranges and honest timeframes. Any institute promising you a guaranteed income is selling you something else.",
   },
 ] as const;
 
@@ -128,12 +130,12 @@ export const differentiators = [
 export const honestComparison = {
   heading: "There are free courses. Should you take them instead?",
   intro:
-    "Sometimes yes, and we will say so. DigiSkills and NAVTTC are free, and NAVTTC even pays a monthly stipend. If money is the binding constraint, start there — genuinely. Here is the honest difference.",
+    "Sometimes yes, and we will say so. Free YouTube and Coursera paths exist. If money is the only constraint, start there — genuinely. Here is the honest difference.",
   rows: [
     {
       point: "Cost",
-      free: "Free. NAVTTC pays a stipend of roughly Rs. 3,000–5,000 per month.",
-      us: "Paid, billed monthly. We are the more expensive option and we will not pretend otherwise.",
+      free: "Free or low-cost recorded courses.",
+      us: "Paid monthly in AED. We are the more expensive option and we will not pretend otherwise.",
     },
     {
       point: "Finishing",
@@ -207,7 +209,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "8 weeks",
     commitment: "3 days a week · 2 hours per session",
-    feeMonthly: 7500,
+    feeMonthly: 399,
     feeMonths: 2,
     entry: "Matric or above. Basic computer familiarity. No coding needed.",
     summary:
@@ -273,7 +275,7 @@ export const programs: Program[] = [
         subModules: [
           { title: "Work that still pays", body: "Categories rising in 2026 versus skills whose rates have collapsed." },
           { title: "Platform reality", body: "How Upwork and similar markets actually work — costs, rejection, and alternatives." },
-          { title: "Local vs remote demand", body: "Pakistan businesses, retainers, and international clients — honest ranges." },
+          { title: "Local vs remote demand", body: "UAE businesses, retainers, and international clients — honest ranges." },
           { title: "Your next program", body: "Read your Foundation result and choose the right ladder step." },
         ],
       },
@@ -296,7 +298,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "16 weeks",
     commitment: "4 days a week · 2.5 hours per session",
-    feeMonthly: 11000,
+    feeMonthly: 549,
     feeMonths: 4,
     entry:
       "Foundation passed, or an entry assessment showing equivalent ability. Functional written English required.",
@@ -305,7 +307,7 @@ export const programs: Program[] = [
     outcome:
       "A shipped, documented system running for a real business, a written case study with a measurable result, and the commercial skills to price, invoice and get paid internationally.",
     honestNote:
-      "Realistically, a strong graduate earns their first paid work within 60–90 days of finishing, often Rs. 25,000–60,000 in the early months. Some earn nothing. We publish both numbers.",
+      "Realistically, a strong graduate earns their first paid work within 60–90 days of finishing, often AED 1,500–4,000 in the early months. Some earn nothing. We publish both numbers.",
     modules: [
       {
         title: "Weeks 1–2 · Foundations",
@@ -353,7 +355,7 @@ export const programs: Program[] = [
         body: "Pricing, PSEB, FBR NTN, Payoneer, contracts, invoices, and platform reality.",
         subModules: [
           { title: "Pricing and retainers", body: "Stop racing to the bottom — price systems, not hours." },
-          { title: "Pakistan payment rails", body: "PSEB, NTN, Payoneer, and invoices that actually clear." },
+          { title: "UAE payment basics", body: "Invoices, contracts, and getting paid locally or internationally — what actually works." },
           { title: "Contracts and disputes", body: "Simple agreements, revisions, and what to do when payment stalls." },
           { title: "Platform vs direct", body: "Upwork costs and rejection — plus routes that do not need a platform." },
         ],
@@ -377,7 +379,7 @@ export const programs: Program[] = [
     status: "open",
     duration: "8 weeks",
     commitment: "Evenings · 3 days a week",
-    feeMonthly: 13000,
+    feeMonthly: 649,
     feeMonths: 2,
     entry: "You already earn something from freelancing or digital work.",
     summary:
@@ -465,7 +467,7 @@ export const programs: Program[] = [
     status: "waitlist",
     duration: "8 weeks",
     commitment: "Evenings and Saturday",
-    feeMonthly: 17500,
+    feeMonthly: 849,
     feeMonths: 2,
     entry: "Currently employed, in any function.",
     summary:
@@ -541,11 +543,11 @@ export const workshops = {
   heading: "Weekend workshops",
   body:
     "Two days, Saturday and Sunday. The cheapest way to see how we teach before committing to a program — and useful on its own.",
-  fee: 3500,
+  fee: 199,
   items: [
     { title: "Build and sell your first AI automation", detail: "Leave with one working automation and a proposal template you can send." },
     { title: "AI for business owners: what to automate first", detail: "For shop owners, traders, dairy and agri businesses, clinics and schools." },
-    { title: "Getting paid from abroad", detail: "PSEB registration, Payoneer, FBR NTN, contracts and invoices. What actually works from Pakistan." },
+    { title: "Getting paid properly", detail: "Invoices, contracts and payment options for freelancers working from the UAE." },
     { title: "Being found by AI search", detail: "How ChatGPT, Gemini and Google AI answers decide which businesses to recommend." },
   ],
 } as const;
@@ -587,7 +589,7 @@ export const campus = {
 
 export const howItWorks = {
   heading: "How learning works",
-  body: "Live online batches you can join from anywhere in Pakistan. Small cohorts, real reviews, monthly fees.",
+  body: "Live online batches you can join from Dubai or anywhere in the UAE. Small cohorts, real reviews, monthly fees in AED.",
   steps: [
     {
       title: "Apply free",
@@ -595,11 +597,11 @@ export const howItWorks = {
     },
     {
       title: "Call + assessment",
-      body: "We call within two working days, explain fees honestly, and run a short entry check.",
+      body: "We call within two working days, explain fees in AED honestly, and run a short entry check.",
     },
     {
       title: "Live online batch",
-      body: "Fixed schedule on Zoom/Meet-class style sessions. Attendance matters. Work is reviewed.",
+      body: "Fixed schedule with evening GST options. Attendance matters. Work is reviewed.",
     },
     {
       title: "Ship real work",
@@ -609,19 +611,19 @@ export const howItWorks = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* One-pager FAQ (Pakistan-wide)                                       */
+/* One-pager FAQ (Dubai / UAE)                                         */
 /* ------------------------------------------------------------------ */
 
 export const homeFaq = {
   heading: "Questions people ask before applying",
   items: [
     {
-      q: "Is this online or on campus?",
-      a: "Live online batches for students across Pakistan. That is how you join today. A Punjab campus visit can be arranged later by appointment — we do not publish a street address on this site yet.",
+      q: "Is this online or on campus in Dubai?",
+      a: "Live online batches for students in Dubai and across the UAE. That is how you join for launch. A physical Dubai space can come later — we do not publish a street address yet.",
     },
     {
-      q: "Can I join from Lahore, Karachi or another city?",
-      a: "Yes. If you have a laptop, stable internet and can attend live sessions, you can apply from anywhere in Pakistan.",
+      q: "Can I join from Abu Dhabi, Sharjah or another emirate?",
+      a: "Yes. If you have a laptop, stable internet and can attend live sessions (including evening GST slots), you can apply from anywhere in the UAE.",
     },
     {
       q: "Are boys and girls in separate batches?",
@@ -629,19 +631,19 @@ export const homeFaq = {
     },
     {
       q: "Is this safe for my daughter to study from home?",
-      a: "Classes are live online from home. She needs a laptop and internet — not travel to a shared city campus. You can join the admissions call with her.",
+      a: "Classes are live online from home. She needs a laptop and internet — not travel to a mixed campus. You can join the admissions call with her.",
     },
     {
       q: "How are fees paid?",
-      a: "Monthly — not one large lump sum. Exact amounts are listed under Fees on this page. Ask about instalments on the admissions call.",
+      a: "Monthly in AED — not one large lump sum. Exact amounts are listed under Fees on this page. Ask about instalments on the admissions call.",
     },
     {
       q: "Do you guarantee a job or income?",
       a: "No. Anyone who promises guaranteed income is selling something else. We publish real batch outcomes — including who earned nothing — after each cohort.",
     },
     {
-      q: "What if DigiSkills or NAVTTC is free?",
-      a: "If money is the only constraint, start there — genuinely. We are paid because you get a live batch, reviewed work, and a year of support after you finish.",
+      q: "Who is this for in Dubai?",
+      a: "Students, fresh graduates, freelancers whose rates are falling, and working professionals who want AI and automation skills they can use on the job or with clients.",
     },
     {
       q: "What do I need to start?",

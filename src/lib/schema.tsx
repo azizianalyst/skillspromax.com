@@ -2,7 +2,7 @@ import { site, programs, homeFaq } from "@/content/site";
 
 /**
  * Structured data for search and AI assistants.
- * No street address / geo pin while the public site is Pakistan-wide online.
+ * Dubai online launch — no street address / geo pin yet.
  */
 
 export const NAP = {
@@ -23,7 +23,7 @@ export function organizationSchema() {
     telephone: NAP.telephone,
     email: NAP.email,
     description:
-      "AI, automation and digital skills training online across Pakistan. Live batches, monthly fees, real client work before completion.",
+      "AI, automation and digital skills training online from Dubai across the UAE. Live batches, monthly fees in AED, real client work before completion.",
     areaServed: site.serviceArea.map((name) => ({ "@type": "Place", name })),
     knowsAbout: [
       "AI automation",
@@ -46,7 +46,7 @@ export function organizationSchema() {
           url: `${site.url}/#programs`,
         },
         price: p.feeMonthly * p.feeMonths,
-        priceCurrency: "PKR",
+        priceCurrency: "AED",
         availability:
           p.status === "open"
             ? "https://schema.org/InStock"
@@ -75,7 +75,7 @@ export function courseSchema(slug: string) {
     offers: {
       "@type": "Offer",
       price: p.feeMonthly * p.feeMonths,
-      priceCurrency: "PKR",
+      priceCurrency: "AED",
       category: "Tuition",
     },
     hasCourseInstance: {

@@ -28,7 +28,7 @@ export function pageMeta(opts: {
       description: opts.description,
       url,
       siteName: site.name,
-      locale: "en_PK",
+      locale: "en_AE",
       type: "website",
     },
     twitter: {

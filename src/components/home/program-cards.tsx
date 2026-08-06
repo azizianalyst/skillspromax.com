@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { programs, workshops, site } from "@/content/site";
-import { formatPkr } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 const statusLabel: Record<string, string> = {
   open: "Open",
@@ -53,7 +53,7 @@ export function ProgramCards() {
                   <div>
                     <p className="text-xs text-faint">Monthly</p>
                     <p className="mt-0.5 font-semibold tnum text-ink">
-                      {formatPkr(p.feeMonthly)}
+                      {formatMoney(p.feeMonthly)}
                       <span className="font-normal text-muted"> · {p.feeMonths} mo</span>
                     </p>
                   </div>
@@ -73,7 +73,7 @@ export function ProgramCards() {
               <h3 className="text-xl font-bold tracking-tight">{workshops.heading}</h3>
               <p className="mt-2 max-w-xl text-sm text-muted">{workshops.body}</p>
             </div>
-            <p className="text-2xl font-bold tnum text-ink">{formatPkr(workshops.fee)}</p>
+            <p className="text-2xl font-bold tnum text-ink">{formatMoney(workshops.fee)}</p>
           </div>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {workshops.items.map((w) => (

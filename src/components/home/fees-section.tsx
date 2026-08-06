@@ -1,5 +1,5 @@
 import { programs, site } from "@/content/site";
-import { formatPkr } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 export function FeesSection() {
   return (
@@ -7,7 +7,7 @@ export function FeesSection() {
       <div className="shell section">
         <div className="max-w-xl">
           <p className="eyebrow">Fees</p>
-          <h2 className="display-lg mt-4">Simple monthly pricing</h2>
+          <h2 className="display-lg mt-4">Simple monthly pricing (AED)</h2>
           <p className="lede mt-4">No application fee. Ask about instalments on the call.</p>
         </div>
 
@@ -26,10 +26,10 @@ export function FeesSection() {
               {programs.map((p) => (
                 <tr key={p.slug} className="border-t border-line">
                   <td className="px-4 py-3.5 font-medium text-ink">{p.name}</td>
-                  <td className="px-4 py-3.5 tnum text-ink-2">{formatPkr(p.feeMonthly)}</td>
+                  <td className="px-4 py-3.5 tnum text-ink-2">{formatMoney(p.feeMonthly)}</td>
                   <td className="px-4 py-3.5 tnum text-muted">{p.feeMonths}</td>
                   <td className="px-4 py-3.5 tnum font-semibold text-ink">
-                    {formatPkr(p.feeMonthly * p.feeMonths)}
+                    {formatMoney(p.feeMonthly * p.feeMonths)}
                   </td>
                 </tr>
               ))}

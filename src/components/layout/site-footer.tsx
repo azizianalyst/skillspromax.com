@@ -12,7 +12,7 @@ export function SiteFooter() {
             Skills<span className="text-accent">Pro</span>Max
           </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
-            Live online digital skills training across Pakistan.
+            Live online digital skills training from Dubai across the UAE.
           </p>
         </div>
 

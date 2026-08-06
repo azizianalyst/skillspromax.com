@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { CheckCircle2, AlertCircle, Phone, MessageCircle } from "lucide-react";
 import { submitApplication, type FormState } from "@/app/actions/apply";
 import { programs, site } from "@/content/site";
-import { formatPkr } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 const initial: FormState = { ok: false };
 
@@ -113,7 +113,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
                 <span className="block text-sm font-semibold text-ink">{p.name}</span>
                 <span className="mt-0.5 block text-xs text-muted">{p.audience}</span>
                 <span className="mt-1.5 block text-xs tnum text-ink-2">
-                  {formatPkr(p.feeMonthly)}/month · {p.feeMonths} months · {p.duration}
+                  {formatMoney(p.feeMonthly)}/month · {p.feeMonths} months · {p.duration}
                 </span>
               </span>
             </label>
@@ -227,12 +227,12 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
           </div>
 
           <div>
-            <label className="label" htmlFor="cnic">CNIC</label>
+            <label className="label" htmlFor="cnic">Emirates ID / passport (optional)</label>
             <input
               id="cnic"
               name="cnic"
               className="field"
-              placeholder="35202-1234567-1"
+              placeholder="Optional — for admissions records"
               aria-invalid={!!e.cnic}
             />
             <FieldError errors={e.cnic} />
@@ -247,7 +247,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
               name="city"
               className="field"
               required
-              placeholder="e.g. Lahore, Karachi, Islamabad, Okara"
+              placeholder="e.g. Dubai, Abu Dhabi, Sharjah, Ajman"
               aria-invalid={!!e.city}
             />
             <FieldError errors={e.city} />

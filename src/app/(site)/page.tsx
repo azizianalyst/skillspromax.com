@@ -14,9 +14,9 @@ import { FinalCta } from "@/components/home/final-cta";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "AI Automation & Digital Skills Course Pakistan",
+  title: "AI Automation & Digital Skills Course Dubai",
   description:
-    "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
+    "Live online AI and automation training from Dubai across the UAE. Monthly fees in AED, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
   path: "/",
 });
 

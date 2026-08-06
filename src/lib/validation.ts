@@ -3,11 +3,11 @@ import { programs } from "@/content/site";
 
 const slugs = programs.map((p) => p.slug) as [string, ...string[]];
 
-/** Pakistani mobile numbers, tolerant of the ways people actually type them. */
+/** Phone numbers for UAE / international WhatsApp, digits and + allowed. */
 const phone = z
   .string()
   .trim()
-  .min(10, "Please enter a valid phone number")
+  .min(9, "Please enter a valid phone number")
   .max(20, "That number looks too long")
   .regex(/^[0-9+\-\s()]+$/, "Digits only, please")
   .transform((v) => v.replace(/[\s()\-]/g, ""));
@@ -29,7 +29,7 @@ export const applicationSchema = z.object({
   cnic: z
     .string()
     .trim()
-    .regex(/^\d{5}-?\d{7}-?\d$/, "Format: 35202-1234567-1")
+    .max(40)
     .optional()
     .or(z.literal("").transform(() => undefined)),
   phone,

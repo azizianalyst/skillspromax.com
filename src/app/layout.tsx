@@ -12,26 +12,26 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `AI Automation & Digital Skills Course Pakistan | ${site.name}`,
+    default: `AI Automation & Digital Skills Course Dubai | ${site.name}`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
+    "Live online AI and automation training from Dubai across the UAE. Monthly fees in AED, small batches, real client work. Apply free — WhatsApp +92 329 1522376.",
   alternates: { canonical: site.url },
   openGraph: {
     type: "website",
-    locale: "en_PK",
+    locale: "en_AE",
     url: site.url,
     siteName: site.name,
     title: `${site.name} — Skills that pay. Taught properly.`,
     description:
-      "Live online AI and automation training across Pakistan. Monthly fees, small batches, real client work.",
+      "Live online AI and automation training from Dubai across the UAE. Monthly fees in AED, small batches, real client work.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Skills that pay. Taught properly.`,
     description:
-      "AI and automation training online across Pakistan. Apply free. WhatsApp +92 329 1522376.",
+      "AI and automation training online from Dubai. Apply free. WhatsApp +92 329 1522376.",
   },
   robots: {
     index: false,
