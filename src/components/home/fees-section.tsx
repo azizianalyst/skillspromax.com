@@ -11,12 +11,12 @@ export function FeesSection() {
           <p className="lede mt-4">No application fee. Ask about instalments on the call.</p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-canvas">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-panel shadow-[0_1px_2px_rgba(10,15,26,0.03)]">
           <table className="w-full text-left text-sm">
             <thead className="bg-sand">
               <tr>
                 {["Program", "Monthly", "Months", "Total"].map((h) => (
-                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-faint">
+                  <th key={h} className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-faint">
                     {h}
                   </th>
                 ))}
@@ -25,10 +25,10 @@ export function FeesSection() {
             <tbody>
               {programs.map((p) => (
                 <tr key={p.slug} className="border-t border-line">
-                  <td className="px-4 py-3.5 font-medium text-ink">{p.name}</td>
-                  <td className="px-4 py-3.5 tnum text-ink-2">{formatMoney(p.feeMonthly)}</td>
-                  <td className="px-4 py-3.5 tnum text-muted">{p.feeMonths}</td>
-                  <td className="px-4 py-3.5 tnum font-semibold text-ink">
+                  <td className="px-5 py-4 font-medium text-ink">{p.name}</td>
+                  <td className="px-5 py-4 tnum text-ink-2">{formatMoney(p.feeMonthly)}</td>
+                  <td className="px-5 py-4 tnum text-muted">{p.feeMonths}</td>
+                  <td className="px-5 py-4 tnum font-semibold text-ink">
                     {formatMoney(p.feeMonthly * p.feeMonths)}
                   </td>
                 </tr>

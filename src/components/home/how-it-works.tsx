@@ -12,9 +12,12 @@ export function HowItWorks() {
 
         <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {howItWorks.steps.map((step, i) => (
-            <li key={step.title} className="rounded-xl border border-line bg-sand p-5">
-              <p className="text-sm font-semibold text-accent">{i + 1}</p>
-              <h3 className="mt-3 text-base font-semibold text-ink">{step.title}</h3>
+            <li
+              key={step.title}
+              className="rounded-3xl border border-line bg-panel p-6 shadow-[0_1px_2px_rgba(10,15,26,0.03)]"
+            >
+              <p className="font-display text-2xl font-bold text-accent">{String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-4 text-base font-semibold text-ink">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
             </li>
           ))}

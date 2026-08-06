@@ -10,15 +10,15 @@ export function Comparison() {
           <p className="lede mt-4">{honestComparison.intro}</p>
         </div>
 
-        <div className="mt-10 overflow-x-auto rounded-2xl border border-line">
+        <div className="mt-10 overflow-x-auto rounded-3xl border border-line bg-panel shadow-[0_1px_2px_rgba(10,15,26,0.03)]">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead className="bg-sand">
               <tr>
-                <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-faint" />
-                <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-faint">
+                <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-faint" />
+                <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-faint">
                   Free courses
                 </th>
-                <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-accent">
+                <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
                   SkillsProMax
                 </th>
               </tr>
@@ -26,9 +26,9 @@ export function Comparison() {
             <tbody>
               {honestComparison.rows.map((row) => (
                 <tr key={row.point} className="border-t border-line align-top">
-                  <th className="px-4 py-4 text-sm font-semibold text-ink">{row.point}</th>
-                  <td className="px-4 py-4 text-muted">{row.free}</td>
-                  <td className="px-4 py-4 text-ink-2">{row.us}</td>
+                  <th className="px-5 py-4 text-sm font-semibold text-ink">{row.point}</th>
+                  <td className="px-5 py-4 text-muted">{row.free}</td>
+                  <td className="px-5 py-4 text-ink-2">{row.us}</td>
                 </tr>
               ))}
             </tbody>
