@@ -10,10 +10,7 @@ export function PromisesStrip() {
         </div>
         <ul className="mt-8 grid gap-3 md:grid-cols-2">
           {promises.map((p) => (
-            <li
-              key={p}
-              className="rounded-2xl border border-line bg-panel px-5 py-4 text-sm leading-relaxed text-ink-2 shadow-[0_1px_2px_rgba(10,15,26,0.03)]"
-            >
+            <li key={p} className="card px-4 py-3.5 text-sm leading-relaxed text-ink-2">
               {p}
             </li>
           ))}

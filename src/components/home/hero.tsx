@@ -1,51 +1,70 @@
-import { hero, site } from "@/content/site";
+import { ArrowRight, MessageCircle, Phone, Star } from "lucide-react";
+import { hero, programs, site } from "@/content/site";
+
+const jumpLinks = [
+  { label: "Programs", href: "/#programs" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Fees", href: "/#fees" },
+  { label: "Apply", href: "/#apply" },
+];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-line atmosphere">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(10,15,26,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,15,26,0.04) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-          maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
-        }}
-        aria-hidden
-      />
+    <section className="hero-bg border-b border-line">
+      <div className="shell py-12 md:py-16 lg:py-20">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="eyebrow">
+            <span className="size-2 rounded-full bg-emerald-500" aria-hidden />
+            {hero.eyebrow} · Live batches open
+          </span>
+          <span className="eyebrow border-amber-200 bg-amber-50 text-amber-800">
+            <Star className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
+            Small batches · AED monthly
+          </span>
+        </div>
 
-      <div className="shell relative py-20 md:py-28 lg:py-32">
-        <p className="reveal eyebrow">{hero.eyebrow}</p>
-
-        <p className="reveal reveal-delay-1 mt-8 font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-ink">
-          Skills<span className="text-accent">Pro</span>Max
-        </p>
-
-        <h1 className="reveal reveal-delay-1 display-xl mt-4 max-w-4xl text-ink">
-          {hero.heading}
+        <h1 className="display-xl mt-8 max-w-4xl text-ink">
+          SkillsProMax — Dubai&apos;s trusted{" "}
+          <span className="text-accent">AI &amp; automation training</span>
         </h1>
 
-        <p className="reveal reveal-delay-2 lede mt-6 max-w-xl">{hero.body}</p>
+        <p className="lede mt-5 max-w-2xl">{hero.body}</p>
 
-        <div className="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-2">
+          {programs.slice(0, 6).map((p) => (
+            <a key={p.slug} href="/#programs" className="pill">
+              {p.name}
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
           <a href={hero.primary.href} className="btn btn-primary btn-lg">
             {hero.primary.label}
+            <ArrowRight className="size-4" aria-hidden />
           </a>
-          <a href={hero.secondary.href} className="btn btn-outline btn-lg">
-            {hero.secondary.label}
+          <a href={site.phone.href} className="btn btn-outline btn-lg">
+            <Phone className="size-4" aria-hidden />
+            {site.phone.display}
           </a>
-          <a href={site.whatsapp.href} className="btn btn-ghost btn-lg">
+          <a href={site.whatsapp.href} className="btn btn-outline btn-lg text-emerald-700">
+            <MessageCircle className="size-4" aria-hidden />
             WhatsApp
           </a>
         </div>
 
-        <ul className="reveal reveal-delay-3 mt-14 grid max-w-3xl gap-3 sm:grid-cols-2">
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wide text-faint">
+          <span>Or jump to</span>
+          {jumpLinks.map((link) => (
+            <a key={link.href} href={link.href} className="normal-case text-accent hover:underline">
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <ul className="mt-8 flex flex-wrap gap-2">
           {hero.points.map((point) => (
-            <li
-              key={point}
-              className="flex items-center gap-3 rounded-2xl border border-line bg-white/70 px-4 py-3 text-sm text-ink-2 backdrop-blur-sm"
-            >
-              <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden />
+            <li key={point} className="chip">
               {point}
             </li>
           ))}
