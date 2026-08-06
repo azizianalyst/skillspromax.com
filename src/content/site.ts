@@ -615,39 +615,47 @@ export const howItWorks = {
 /* ------------------------------------------------------------------ */
 
 export const homeFaq = {
-  heading: "Questions people ask before applying",
+  heading: "Questions before you apply",
   items: [
     {
-      q: "Is this online or on campus in Dubai?",
-      a: "Live online batches for students in Dubai and across the UAE. That is how you join for launch. A physical Dubai space can come later — we do not publish a street address yet.",
+      q: "How much does SkillsProMax cost in Dubai?",
+      a: "Foundation is AED 399/month for 2 months. Practitioner is AED 549/month for 4 months. Re-skill is AED 649/month for 2 months, Advance AED 849/month for 2 months, and workshops from AED 199. There is no application fee. Ask about instalments on the admissions call.",
+    },
+    {
+      q: "Is SkillsProMax online or on campus in Dubai?",
+      a: "Classes are live online for students in Dubai and across the UAE. You join from home on a fixed schedule, including evening GST slots. A physical Dubai space may come later — we do not publish a street address yet.",
     },
     {
       q: "Can I join from Abu Dhabi, Sharjah or another emirate?",
-      a: "Yes. If you have a laptop, stable internet and can attend live sessions (including evening GST slots), you can apply from anywhere in the UAE.",
+      a: "Yes. If you have a laptop, stable internet, and can attend live sessions, you can apply from anywhere in the UAE. Location does not change your fee or curriculum.",
     },
     {
       q: "Are boys and girls in separate batches?",
-      a: "Yes. We run separate cohorts and timings for male and female students. We ask gender only to place you correctly.",
+      a: "Yes. Male and female students are placed in separate online cohorts and timings. We ask gender only so we can place you correctly — there is no mixed live classroom.",
     },
     {
       q: "Is this safe for my daughter to study from home?",
-      a: "Classes are live online from home. She needs a laptop and internet — not travel to a mixed campus. You can join the admissions call with her.",
+      a: "Yes. Classes are live online from home. She needs a laptop and internet — not travel to a mixed campus. Parents can join the free admissions call and ask anything before paying.",
     },
     {
-      q: "How are fees paid?",
-      a: "Monthly in AED — not one large lump sum. Exact amounts are listed under Fees on this page. Ask about instalments on the admissions call.",
+      q: "How long until I finish a program?",
+      a: "Foundation, Re-skill and Advance run about 2 months. Practitioner runs about 4 months. Workshops are short one-off sessions. Exact dates are confirmed after your admissions call and entry check.",
     },
     {
       q: "Do you guarantee a job or income?",
-      a: "No. Anyone who promises guaranteed income is selling something else. We publish real batch outcomes — including who earned nothing — after each cohort.",
+      a: "No. We never promise a job or a salary. We teach skills the market pays for, review your work, and publish real batch outcomes after every cohort — including who earned nothing.",
     },
     {
       q: "Who is this for in Dubai?",
-      a: "Students, fresh graduates, freelancers whose rates are falling, and working professionals who want AI and automation skills they can use on the job or with clients.",
+      a: "Students, fresh graduates, freelancers whose rates are falling, and working professionals who want AI and automation skills they can use at work or with clients. If Foundation is a better fit than Practitioner, we will say so before you pay.",
     },
     {
       q: "What do I need to start?",
-      a: "A computer you can use for class, internet that holds a video call, and enough English to follow professional client work. We will tell you honestly if you are not ready yet.",
+      a: "A computer for class, internet that holds a video call, and enough English to follow professional client work. Apply free — we will tell you honestly if you are not ready yet.",
+    },
+    {
+      q: "What happens after I apply?",
+      a: "We call within two working days, explain fees in AED, and run a short entry check. If the program is not right for you, we say so before you pay. WhatsApp +92 329 1522376 if you want to talk first.",
     },
   ],
 } as const;
