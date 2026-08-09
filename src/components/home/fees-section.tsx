@@ -1,4 +1,4 @@
-import { programs, site } from "@/content/site";
+import { programs, workshops, site } from "@/content/site";
 import { formatMoney } from "@/lib/utils";
 
 export function FeesSection() {
@@ -16,7 +16,10 @@ export function FeesSection() {
             <thead className="bg-sand">
               <tr>
                 {["Program", "Monthly", "Months", "Total"].map((h) => (
-                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-faint">
+                  <th
+                    key={h}
+                    className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-faint"
+                  >
                     {h}
                   </th>
                 ))}
@@ -33,13 +36,25 @@ export function FeesSection() {
                   </td>
                 </tr>
               ))}
+              <tr className="border-t border-line">
+                <td className="px-4 py-3.5 font-medium text-ink">Weekend workshop</td>
+                <td className="px-4 py-3.5 tnum text-ink-2">{formatMoney(workshops.fee)}</td>
+                <td className="px-4 py-3.5 tnum text-muted">—</td>
+                <td className="px-4 py-3.5 tnum font-semibold text-ink">
+                  {formatMoney(workshops.fee)}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <a href="/#apply" className="btn btn-primary btn-sm">Apply free</a>
-          <a href={site.whatsapp.href} className="btn btn-outline btn-sm">WhatsApp first</a>
+          <a href="/#apply" className="btn btn-primary btn-sm">
+            Apply free
+          </a>
+          <a href={site.whatsapp.href} className="btn btn-outline btn-sm">
+            WhatsApp first
+          </a>
         </div>
       </div>
     </section>

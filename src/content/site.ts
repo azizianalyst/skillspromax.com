@@ -114,7 +114,7 @@ export const differentiators = [
   {
     title: "Small batches, with a real entry test",
     body:
-      "Batches are capped so every student's work gets reviewed. There is an entry assessment, and not everyone passes. If a program is not right for you, we will tell you before you pay — and point you to a free government course instead if that genuinely suits you better.",
+      "Batches are capped so every student's work gets reviewed. There is an entry assessment, and not everyone passes. If a program is not right for you, we will tell you before you pay — and point you to a free or low-cost alternative if that genuinely suits you better.",
   },
   {
     title: "We never promise a job or an income",
@@ -557,29 +557,27 @@ export const workshops = {
 /* ------------------------------------------------------------------ */
 
 export const campus = {
-  heading: "A proper place to study",
+  heading: "Online-first training",
   body:
-    "We built the campus before we opened admissions, because studying in a hot, crowded room does not work. Our own building on Depalpur–Kasur Road, next to Govt. Associate College for Women, Allahabad.",
+    "SkillsProMax is Dubai-based and runs live online batches for students worldwide. There is no public street address — you join from home on a fixed schedule.",
   features: [
-    { title: "Three separate halls", body: "Boys and girls are taught in separate halls, always. Never a shared classroom." },
-    { title: "Air conditioned throughout", body: "Every hall and office. Summer batches run normally." },
-    { title: "Fully furnished", body: "Proper desks, proper seating, proper lighting — set up for long practical sessions." },
-    { title: "Offices and meeting rooms", body: "For admissions conversations, parent meetings and one-to-one reviews." },
-    { title: "Beside a women's college", body: "A short walk for students at Govt. Associate College for Women, on a road families already know." },
-    { title: "Backup power", body: "So a load-shedding hour does not cost you a session." },
+    { title: "Live online classrooms", body: "Fixed schedule sessions with attendance and reviewed work." },
+    { title: "Separate cohorts", body: "Male and female students are placed in separate online batches." },
+    { title: "Small batches", body: "Every student's work gets reviewed — not a massive webinar." },
+    { title: "Time-zone placement", body: "We match you to a slot that works for your country." },
+    { title: "Admissions by call", body: "Apply free — we call or WhatsApp within two working days." },
+    { title: "No campus visit required", body: "Laptop and internet are enough to start." },
   ],
   timings: {
     heading: "Timings that fit real life",
-    body:
-      "This is an agricultural district and most of our students are also studying or working. So we run several batches and we are flexible about it.",
+    body: "We run several live online slots across the week so students who work or study can still join.",
     slots: [
-      { label: "Morning", value: "8:00 – 10:30 AM", note: "Before college" },
-      { label: "Midday", value: "11:00 AM – 1:30 PM", note: "Girls' batches" },
-      { label: "Afternoon", value: "2:30 – 5:00 PM", note: "After college" },
-      { label: "Evening", value: "5:30 – 8:00 PM", note: "For people in jobs" },
+      { label: "Morning", value: "Gulf morning", note: "Good for Asia / Middle East" },
+      { label: "Midday", value: "Gulf midday", note: "Flexible cohorts" },
+      { label: "Afternoon", value: "Gulf afternoon", note: "After work/study" },
+      { label: "Evening", value: "Gulf evening", note: "For people in jobs" },
     ],
-    note:
-      "During wheat and potato harvest we will move your batch rather than lose you. Tell us and we will arrange it.",
+    note: "If your time zone does not fit a published slot, tell us on the admissions call and we will place you honestly.",
   },
 } as const;
 
@@ -665,13 +663,13 @@ export const homeFaq = {
 /* ------------------------------------------------------------------ */
 
 export const business = {
-  heading: "Automation for businesses in Okara",
+  heading: "Automation for growing businesses",
   body:
-    "Okara runs on potatoes, dairy and wheat. Most of the record-keeping behind those businesses is still done by hand. We build systems that take that work off your staff — and our senior students build them under supervision, so the cost is a fraction of a city agency.",
+    "We build practical automation systems for clinics, schools, trading companies, logistics teams and service businesses — and our senior students build them under supervision, so the cost is a fraction of a city agency.",
   examples: [
-    { title: "Dairy and milk collection", body: "Daily collection records, per-farmer ledgers, yield tracking, automatic payment summaries." },
-    { title: "Potato traders and cold storage", body: "Stock in and out, lot tracking, buyer ledgers, automated payment reminders." },
-    { title: "Agri-input dealers", body: "Inventory, credit ledgers, WhatsApp order taking, season-based reordering." },
+    { title: "Lead handling", body: "Capture, qualify and follow up leads without a spreadsheet mess." },
+    { title: "Operations records", body: "Stock, appointments, collections and status updates that stay current." },
+    { title: "Invoicing and reminders", body: "Clean invoices, payment follow-ups and simple reporting." },
     { title: "Schools and academies", body: "Admissions enquiries, fee reminders, attendance reports to parents." },
     { title: "Clinics and labs", body: "Appointments, reminders, report delivery over WhatsApp." },
     { title: "Staff training", body: "Half-day or full-day sessions teaching your own team to use AI properly." },

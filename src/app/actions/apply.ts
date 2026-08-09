@@ -28,6 +28,7 @@ export async function submitApplication(
 
   // Checkboxes only appear in FormData when checked.
   // Country is collected for worldwide applicants and stored with city.
+  // Compact apply may omit laptop/internet checkboxes — default online-ready.
   const cityWithCountry = [raw.city?.trim(), raw.country?.trim()]
     .filter(Boolean)
     .join(", ");
@@ -36,7 +37,9 @@ export async function submitApplication(
     ...raw,
     city: cityWithCountry || raw.city,
     hasComputer: raw.hasComputer === "on",
-    hasInternet: raw.hasInternet === "on",
+    // Online-first: treat internet as available unless the full form unchecked it.
+    // Compact apply has no checkbox, so default true.
+    hasInternet: raw.hasInternet === "on" || raw.hasInternet === "true" || raw.hasInternet === undefined,
   });
 
   if (!parsed.success) {

@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { site } from "@/content/site";
 
 /**
  * Mail goes out through the Hostinger mailboxes you already own.
@@ -151,42 +152,39 @@ export function applicantAcknowledgement(data: {
   fullName: string;
   programName: string;
 }) {
-  const text = `Assalam-o-Alaikum ${data.fullName},
+  const text = `Hello ${data.fullName},
 
 We have received your application for ${data.programName}.
 Your reference number is ${data.reference}. Please keep it.
 
 What happens next:
-1. Someone from our admissions team will call you within two working days.
-2. We will explain the program, the fees and the timings, and answer your questions.
+1. Someone from our admissions team will call or WhatsApp you within two working days.
+2. We will explain the program, USD fees and live online timings for your time zone.
 3. If the program suits you, we will arrange your entry assessment.
 
-If a different program would suit you better, we will tell you honestly — including
-if a free government course is the better choice for your situation right now.
+If a different program would suit you better, we will tell you honestly before you pay.
 
-You are welcome to visit the campus before deciding. No appointment needed.
-Near Govt. Associate College for Women, Allahabad, Depalpur–Kasur Road.
+SkillsProMax is Dubai-based and fully online — there is no campus visit required.
 
 SkillsProMax Admissions
-${MAIL.admissions}`;
+${MAIL.admissions}
+WhatsApp ${site.whatsapp.display}`;
 
   return {
     subject: `Your application to SkillsProMax — ${data.reference}`,
     html: `<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:600px;color:#0f1115;font-size:14px;line-height:1.65">
-      <p>Assalam-o-Alaikum ${escapeHtml(data.fullName)},</p>
+      <p>Hello ${escapeHtml(data.fullName)},</p>
       <p>We have received your application for <strong>${escapeHtml(data.programName)}</strong>.
       Your reference number is <strong>${data.reference}</strong> — please keep it.</p>
       <p><strong>What happens next</strong></p>
       <ol style="padding-left:18px">
-        <li>Someone from our admissions team will call you within two working days.</li>
-        <li>We will explain the program, the fees and the timings, and answer your questions.</li>
+        <li>Someone from our admissions team will call or WhatsApp you within two working days.</li>
+        <li>We will explain the program, USD fees and live online timings for your time zone.</li>
         <li>If the program suits you, we will arrange your entry assessment.</li>
       </ol>
-      <p>If a different program would suit you better, we will tell you honestly — including
-      if a free government course is the better choice for your situation right now.</p>
-      <p>You are welcome to visit the campus before deciding. No appointment needed.<br>
-      Near Govt. Associate College for Women, Allahabad, Depalpur–Kasur Road.</p>
-      <p style="color:#6c727c">SkillsProMax Admissions<br>${MAIL.admissions}</p>
+      <p>If a different program would suit you better, we will tell you honestly before you pay.</p>
+      <p>SkillsProMax is Dubai-based and fully online — there is no campus visit required.</p>
+      <p style="color:#6c727c">SkillsProMax Admissions<br>${MAIL.admissions}<br>WhatsApp ${site.whatsapp.display}</p>
     </div>`,
     text,
   };

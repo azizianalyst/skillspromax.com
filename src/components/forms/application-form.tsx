@@ -121,6 +121,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string })
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
+      {/* Online-first delivery mode for admissions context */}
+      <input type="hidden" name="deliveryMode" value="ONLINE_LIVE" />
+      <input type="hidden" name="hasInternet" value="true" />
+
       <div className="mb-6 flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-ink">Quick apply</p>
         <span className="chip chip-accent">{fullForm ? "Full form" : "Minimum"}</span>

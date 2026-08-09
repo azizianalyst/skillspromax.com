@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description:
-    "How SkillsProMax handles personal information from applications, enquiries and student accounts in Depalpur, Okara.",
+    "How SkillsProMax handles personal information from applications, enquiries and student accounts for our Dubai-based online programs.",
   path: "/privacy",
 });
 
@@ -20,16 +20,17 @@ export default function PrivacyPage() {
           <h2>What we collect</h2>
           <p>
             When you apply or send an enquiry we collect your name, phone number, and
-            optionally your email, CNIC, city, education and the information you type into
-            the form. If you enrol, we also keep attendance, assessment and fee records.
+            optionally your email, ID or passport details, city, country, education and
+            the information you type into the form. If you enrol, we also keep attendance,
+            assessment and fee records.
           </p>
 
           <h2>Why we collect it</h2>
           <p>
-            To contact you about your application, to place you in the correct batch, to
-            keep student and fee records, and to calculate the outcome figures we publish.
-            Published outcome figures are always aggregate — we never publish an individual
-            student&rsquo;s name or earnings without their written permission.
+            To contact you about your application, to place you in the correct online
+            cohort, to keep student and fee records, and to calculate the outcome figures
+            we publish. Published outcome figures are always aggregate — we never publish
+            an individual student&rsquo;s name or earnings without their written permission.
           </p>
 
           <h2>Who can see it</h2>
@@ -39,10 +40,11 @@ export default function PrivacyPage() {
             number to another institute or business.
           </p>
 
-          <h2>CNIC and identity documents</h2>
+          <h2>ID and identity documents</h2>
           <p>
-            CNIC is optional at application stage. We ask for it at enrolment for our own
-            student records only. It is not shared with anyone.
+            National ID, Emirates ID or passport details are optional at application. We
+            may ask for them at enrolment for our own student records only. They are not
+            shared with anyone.
           </p>
 
           <h2>How long we keep it</h2>
@@ -63,6 +65,14 @@ export default function PrivacyPage() {
           <p>
             We use a session cookie for the student and staff portal. We do not run
             advertising trackers on this site.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Questions:{" "}
+            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
+            {" · "}
+            <a href={site.whatsapp.href}>WhatsApp {site.whatsapp.display}</a>
           </p>
         </div>
       </div>

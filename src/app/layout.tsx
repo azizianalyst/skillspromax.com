@@ -40,10 +40,9 @@ export const metadata: Metadata = {
       "AI and automation training online from Dubai. Join from anywhere. Apply free. WhatsApp +971 50 208 3909.",
   },
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: { index: false, follow: false, noimageindex: true },
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 };
 

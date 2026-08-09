@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Refund Policy",
   description:
-    "SkillsProMax refund policy for programs in Depalpur — written publicly and honoured. Read before you enrol.",
+    "SkillsProMax refund policy for Dubai-based online programs — written publicly and honoured. Read before you enrol.",
   path: "/refund-policy",
 });
 
@@ -19,8 +19,8 @@ export default function RefundPolicyPage() {
         <div className="prose-doc mt-10">
           <p>
             Refund stonewalling is one of the most common complaints against paid training
-            providers in Pakistan. So ours is written here in plain language, and we honour
-            it without argument.
+            providers. Ours is written here in plain language, and we honour it without
+            argument. Fees are charged in USD for live online cohorts.
           </p>
 
           <h2>Before your batch starts</h2>
@@ -31,7 +31,7 @@ export default function RefundPolicyPage() {
           <h2>Within the first week of your batch</h2>
           <p>
             Full refund of the month&rsquo;s fee if you decide the program is not right for
-            you. Tell us in person, by phone or by email — whichever is easiest.
+            you. Tell us by WhatsApp, phone or email — whichever is easiest.
           </p>
 
           <h2>After the first week</h2>
@@ -44,22 +44,25 @@ export default function RefundPolicyPage() {
           <h2>If we cancel or fail to deliver</h2>
           <p>
             If we cancel a batch, or if we fail to deliver what is described on the program
-            page, you receive a full refund of every rupee paid for the undelivered
+            page, you receive a full refund of every dollar paid for the undelivered
             portion. This applies regardless of timing.
           </p>
 
           <h2>If you need to pause</h2>
           <p>
-            Illness, family emergency, harvest season, a job that changes shift — tell us
-            and we will move you to a later batch instead of taking your money for a course
-            you cannot attend. There is no charge for transferring batches once.
+            Illness, family emergency, a job that changes shift, or a time-zone conflict —
+            tell us and we will move you to a later online batch instead of taking your
+            money for a course you cannot attend. There is no charge for transferring
+            batches once.
           </p>
 
           <h2>How to request a refund</h2>
           <p>
-            Email <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a> with
-            your name and reference number, or come to the office. We will respond within
-            three working days and process approved refunds within fourteen days.
+            Email <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a> or
+            WhatsApp{" "}
+            <a href={site.whatsapp.href}>{site.whatsapp.display}</a> with your name and
+            reference number. We will respond within three working days and process approved
+            refunds within fourteen days. No office visit is required.
           </p>
 
           <h2>If we get it wrong</h2>

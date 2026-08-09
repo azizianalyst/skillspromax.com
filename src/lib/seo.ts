@@ -18,7 +18,7 @@ export function pageMeta(opts: {
   index?: boolean;
 }): Metadata {
   const url = absoluteUrl(opts.path);
-  const index = opts.index ?? false;
+  const index = opts.index ?? true;
   return {
     title: opts.title,
     description: opts.description,

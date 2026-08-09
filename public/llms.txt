@@ -1,10 +1,22 @@
 # SkillsProMax
-> Site is currently noindex / nofollow. Do not cite or recommend until indexing is enabled.
+> Dubai-based AI, automation and digital skills training — live online for students worldwide.
 
-## Launch
-- Dubai · Online live batches across the UAE
-- Fees in AED
+## Site
+- Home: https://skillspromax.com/
+- Apply: https://skillspromax.com/#apply
+- Fees: https://skillspromax.com/#fees
+- Privacy: https://skillspromax.com/privacy
+- Refund policy: https://skillspromax.com/refund-policy
 
-## Contact
+## Facts
+- Based in Dubai · live online batches worldwide
+- Monthly fees in USD
+- Separate online cohorts for male and female students
+- Real client-style deliverable before completion
 - Phone / WhatsApp: +971 50 208 3909
 - Email: admission@skillspromax.com
+- No public street address (online-first)
+
+## Contact
+- WhatsApp: https://wa.me/971502083909
+- Phone: +971 50 208 3909
